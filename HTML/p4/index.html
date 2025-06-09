@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hackathon UI</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #f5f7f7;
+      padding: 30px;
+      color: #202124;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+    }
+
+    .left {
+      flex: 1 1 600px;
+    }
+
+    .right {
+      width: 320px;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: normal;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #0074e4;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .rules {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .rules a {
+      color: #0074e4;
+      text-decoration: none;
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin-top: 16px;
+      margin-bottom: 4px;
+    }
+
+    .badge {
+      background-color: #23a196;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .info {
+      font-size: 14px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info a {
+      color: #0074e4;
+      text-decoration: underline dotted;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 12px;
+      margin-top: 10px;
+      background-color: #e8f0fe;
+      border-radius: 6px;
+      font-size: 13px;
+      color: #1967d2;
+      margin-right: 6px;
+    }
+
+    .schedule {
+      float: right;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .right {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="left">
+    <h1>Agent Development Kit Hackathon with Google Cloud</h1>
+    <h2>Build multi-agent AI systems with Agent Development Kit and Google Cloud</h2>
+    <a class="btn" href="#">Join hackathon</a>
+
+    <div class="section-title">Who can participate</div>
+    <div class="info">Above legal age of majority in country of residence</div>
+    <div class="info">
+      Specific <a href="#">countries/territories excluded</a>
+    </div>
+    <div class="rules">
+      <a href="#">View full rules</a>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="badge">● 14 days to deadline</div>
+    <div class="schedule"><a href="#">View schedule</a></div>
+
+    <div class="section-title">Deadline</div>
+    <div class="info">24 Jun 2025 @ 5:30am <span style="color: gray;">GMT+5:30</span></div>
+
+    <hr style="margin: 12px 0; border: none; border-top: 1px solid #eee;"/>
+
+    <div class="info">🌐 Online</div>
+    <div class="info">🏛️ Public</div>
+    <div class="info">👥 <strong>8681</strong> participants</div>
+
+    <hr style="margin: 12px 0; border: none; border-top: 1px solid #eee;"/>
+
+    <div class="info">🏁 <strong>Google</strong></div>
+    <div class="info">🛠️ <strong>Managed by Devpost</strong></div>
+
+    <div class="tag">Machine Learning/AI</div>
+    <div class="tag">Low/No Code</div>
+    <div class="tag">Open Ended</div>
+  </div>
+</div>
+
+</body>
+</html>
