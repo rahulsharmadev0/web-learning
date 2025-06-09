@@ -1,170 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hackathon UI</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-      background-color: #f5f7f7;
-      padding: 30px;
-      color: #202124;
-    }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: space-between;
-    }
-
-    .left {
-      flex: 1 1 600px;
-    }
-
-    .right {
-      width: 320px;
-      background-color: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    }
-
-    h1 {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: 18px;
-      font-weight: normal;
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      display: inline-block;
-      background-color: #0074e4;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 500;
-      margin-bottom: 20px;
-    }
-
-    .rules {
-      margin-top: 10px;
-      font-size: 14px;
-    }
-
-    .rules a {
-      color: #0074e4;
-      text-decoration: none;
-    }
-
-    .section-title {
-      font-weight: bold;
-      margin-top: 16px;
-      margin-bottom: 4px;
-    }
-
-    .badge {
-      background-color: #23a196;
-      color: white;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 14px;
-      display: inline-block;
-      margin-bottom: 10px;
-    }
-
-    .info {
-      font-size: 14px;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .info a {
-      color: #0074e4;
-      text-decoration: underline dotted;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 6px 12px;
-      margin-top: 10px;
-      background-color: #e8f0fe;
-      border-radius: 6px;
-      font-size: 13px;
-      color: #1967d2;
-      margin-right: 6px;
-    }
-
-    .schedule {
-      float: right;
-      font-size: 14px;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .right {
-        width: 100%;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hackathon Event</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<div class="container">
-  <div class="left">
-    <h1>Agent Development Kit Hackathon with Google Cloud</h1>
-    <h2>Build multi-agent AI systems with Agent Development Kit and Google Cloud</h2>
-    <a class="btn" href="#">Join hackathon</a>
+  <!-- Hero Section with full-width background -->
+  <section class="hero-section">
 
-    <div class="section-title">Who can participate</div>
-    <div class="info">Above legal age of majority in country of residence</div>
-    <div class="info">
-      Specific <a href="#">countries/territories excluded</a>
+    <div style="position: relative; display: inline-block; width: 100%;">
+      <img
+        src="https://d112y698adiu2z.cloudfront.net/photos/production/challenge_background_images/003/388/219/datas/original.png"
+        style="width: 100%; height: auto;" />
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 1.5rem; font-weight: 400; text-align: center;
+      font-family: system-ui;">
+        Agent Development Kit<br>
+        Hackathon with Google Cloud
+      </div>
     </div>
-    <div class="rules">
-      <a href="#">View full rules</a>
+
+    <div class="container">
+      <div class="event-container">
+        <div class="event-content">
+          <h1 class="title-lg">Agent Development Kit Hackathon with Google Cloud</h1>
+          <h2 class="title-md">Build multi-agent AI systems with Agent Development Kit and Google Cloud</h2>
+          <a class="btn btn-primary" href="#">Join hackathon</a>
+
+          <div class="section-heading">Who can participate</div>
+          <div class="text-sm mb-10">Above legal age of majority in country of residence</div>
+          <div class="text-sm mb-10">
+            Specific <a href="#" class="text-primary">countries/territories excluded</a>
+          </div>
+          <div class="text-sm mb-10">
+            <a href="#" class="text-primary">View full rules</a>
+          </div>
+        </div>
+
+        <div class="even-schedule-card">
+          <div style="align-content: space-between;">
+            <div class="badge badge-success">● 14 days to deadline</div>
+            <div class="float-right text-sm"><a href="#" class="text-primary">View schedule</a></div>
+          </div>
+
+          <div class="section-heading">Deadline</div>
+          <div class="text-sm mb-10">24 Jun 2025 @ 5:30am <span class="text-secondary">GMT+5:30</span></div>
+
+          <hr class="divider" />
+
+          <div class="text-sm mb-10">🌐 Online</div>
+          <div class="text-sm mb-10">🏛️ Public</div>
+          <div class="text-sm mb-10">👥 <b>8681</b> participants</div>
+
+          <hr class="divider" />
+
+          <div class="text-sm mb-10">🏁 <b>Google</b></div>
+          <div class="text-sm mb-10">🛠️ <b>Managed by Devpost</b></div>
+
+          <div class="category-tag">Machine Learning/AI</div>
+          <div class="category-tag">Low/No Code</div>
+          <div class="category-tag">Open Ended</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="container">
+    <div class="video-container">
+      <div class="video-wrapper">
+        <iframe width="100%" height="475.5" src="https://www.youtube.com/embed/zDoSNJyuxg0?si=C-e_vi6Kux95RKpQ"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+
+      <div class="video-sidebar">
+        <div class="contact-box">
+          Questions?<a href="mailto:shawni@devpost.com" style="padding-left: 2px;" class="text-primary"> Email the
+            hackathon manager</a>
+        </div>
+
+        <div class="text-xs">
+          <p>
+            This site is protected by reCAPTCHA and the Google
+            <a href="https://policies.google.com/privacy" target="_blank" class="text-primary">Privacy Policy</a> and
+            <a href="https://policies.google.com/terms" target="_blank" class="text-primary">Terms of Service</a> apply.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="right">
-    <div class="badge">● 14 days to deadline</div>
-    <div class="schedule"><a href="#">View schedule</a></div>
+  <section class="content-section">
+    <div class="container">
+      <div class="section-header">
+        <h3>REQUIREMENTS</h3>
+        <hr class="divider" />
+      </div>
+      <div>
+        <h5>What to Build</h5>
+        <p>Your project must be built using Agent Development Kit and you must focus on the design and orchestration of
+          interactions between multiple agents using ADK (Python or Java version). Build your solutions within one of
+          the
+          following categories:</p>
+        <ul>
+          <li><b> Automation of Complex Processes:</b> Design multi-agent workflows to automate complex, multi-step
+            business processes, software development lifecycle, or manage intricate tasks.</li>
+          <li><b>Data Analysis and Insights: </b>Create multi-agent systems that autonomously analyze data from
+            various sources, derive meaningful insights using tools like BigQuery, and collaboratively present findings.
+          </li>
+          <li><b>Customer Service and Engagement: </b>Develop intelligent virtual assistants or support agents
+            built with ADK as multi-agent systems to handle complex customer inquiries, provide personalized support,
+            and
+            proactively engage with customers.</li>
+          <li><b>Content Creation and Generation:</b> Build multi-agent systems that can autonomously generate
+            different forms of content, such as marketing materials, reports, or code, by orchestrating agents with
+            specialized content generation capabilities.</li>
+        </ul>
+        <p>Your project must be built using Agent Development Kit and you must focus on the design and orchestration of
+          interactions between multiple agents using ADK. While ADK is foundational, you are allowed and encouraged to
+          enhance your solutions by integrating with other relevant technologies and frameworks within the Google Cloud
+          ecosystem.</p>
+        <p>The project must be capable of being successfully installed and must function as depicted in the video and/or
+          expressed in the text description.</p>
+        <p>&nbsp;</p>
+        <h5>What to Submit</h5>
+        <ul>
+          <li>Include a URL to the hosted Project for judging and testing.</li>
+          <li>Include a text description that includes a summary of the Project’s features and functionality,
+            technologies
+            used, information about any other data sources used, and your findings and learnings as you worked through
+            the
+            project. Written parts of entries must be in English to be eligible.&nbsp; The Submission must, at a
+            minimum,
+            support English language use.</li>
+          <li>Include a URL to your public code repository to show how your project was built. The code repository must
+            be
+            public to allow access for judging and testing. By submitting this code, you confirm you have the authority
+            and
+            right to share the code for the purposes described in this Contest.</li>
+          <li>Include an Architecture Diagram showing which technologies were used and how they interact with one
+            another.
+          </li>
+          <li>Include a demonstration video of your Project. The video portion of the submission must meet the following
+            criteria:
+            <ul>
+              <li>Should include footage that shows the Project functioning on the platform(s) for which it was built.
+              </li>
+              <li>No parts of the submission can be derogatory, offensive, threatening, defamatory, disparaging,
+                libelous
+                or
+                contain any content that is inappropriate, indecent, sexual, profane, indecent, tortuous, slanderous,
+                discriminatory in any way, or that promotes hatred or harm against any group or person, or otherwise
+                does
+                not comply with the theme and spirit of the Contest.</li>
+              <li>No part of that submission contains content, material or any element that is unlawful, or otherwise in
+                violation of or contrary to all applicable federal, state, or local laws and regulations in any
+                country,&nbsp; state or applicable territory where you created the video and in the United States.</li>
+              <li>The Submission must not contain any content, material or element that displays any third party
+                advertising, slogan, logo, trademark or otherwise indicates a sponsorship or endorsement by a third
+                party,
+                commercial entity or that is not within the spirit of the Contest, as determined by Sponsor, in its sole
+                discretion.&nbsp;&nbsp;</li>
+              <li>The Submission must be an original, unpublished work that does not contain, incorporate or otherwise
+                use
+                any content, material or element that is owned by a third party or entity.</li>
+              <li>It cannot contain any content, element, or material that violates a third party’s publicity, privacy
+                or
+                intellectual property rights.</li>
+              <li>It should not be longer than 3 minutes.&nbsp; If it is longer than 3 minutes, only the first 3 minutes
+                will be evaluated.</li>
+              <li>It must conform to the technical requirements set forth on the Contest site, including that the
+                Submission
+                must be uploaded to and made publicly visible on YouTube or Vimeo, and a link to the video must be
+                provided
+                on the Submission form on the Contest Site.</li>
+              <li>It must be in English or include English subtitles.&nbsp;</li>
+            </ul>
+          </li>
+        </ul>
+        <p>&nbsp;</p>
+        <p>Check out the <a href="https://googlecloudmultiagents.devpost.com/rules" target="_blank" rel="noopener"
+            class="text-primary">rules
+            tab</a> for full details on submissions.</p>
+        <p>&nbsp;</p>
+        <p>Start learning about AI agents on Google Cloud&nbsp;<a
+            href="https://googlecloudmultiagents.devpost.com/resources" target="_blank" rel="noopener"
+            class="text-primary">here</a>.</p>
+      </div>
+    </div>
 
-    <div class="section-title">Deadline</div>
-    <div class="info">24 Jun 2025 @ 5:30am <span style="color: gray;">GMT+5:30</span></div>
+    <div class="container">
+      <div class="section-header">
+        <h3>PRIZES</h3>
+        <hr class="divider" />
+      </div>
 
-    <hr style="margin: 12px 0; border: none; border-top: 1px solid #eee;"/>
+      <div class="prize-total">
+        $50,000 in prizes
+      </div>
 
-    <div class="info">🌐 Online</div>
-    <div class="info">🏛️ Public</div>
-    <div class="info">👥 <strong>8681</strong> participants</div>
+      <div class="prize-grid">
+        <div class="prize-card">
+          <h4 class="prize-card-title">🏅 Grand Prize</h4>
+          <div class="prize-card-content">
+            <div class="prize-amount">$15,000 in cash</div>
+            <div class="prize-winner-count">1 winner</div>
+            <ul class="prize-details">
+              <li>$15,000 in USD</li>
+              <li>$3,000 in Google Cloud Credits for use with a Cloud Billing Account</li>
+              <li>1 year of Google Developer Program Premium subscription at no-cost</li>
+              <li>Virtual Coffee with a Google Team Member</li>
+              <li>Social Promo</li>
+            </ul>
+          </div>
+        </div>
 
-    <hr style="margin: 12px 0; border: none; border-top: 1px solid #eee;"/>
+        <div class="prize-card">
+          <h4 class="prize-card-title">🏅 Honorable Mentions</h4>
+          <div class="prize-card-content">
+            <div class="prize-amount">$1,000 in cash</div>
+            <div class="prize-winner-count">3 winners</div>
+            <ul class="prize-details">
+              <li>$1000 in USD</li>
+              <li>$500 in Google Cloud Credits for use with a Cloud Billing Account</li>
+            </ul>
+          </div>
+        </div>
 
-    <div class="info">🏁 <strong>Google</strong></div>
-    <div class="info">🛠️ <strong>Managed by Devpost</strong></div>
+        <div class="prize-card">
+          <h4 class="prize-card-title">⭐️ North America Regional Winner</h4>
+          <div class="prize-card-content">
+            <div class="prize-amount">$8,000 in cash</div>
+            <div class="prize-winner-count">1 winner</div>
+            <ul class="prize-details">
+              <li>$8,000 in USD</li>
+              <li>$1,000 in Google Cloud Credits for use with a Cloud Billing Account</li>
+              <li>Virtual Coffee with a Google Team Member</li>
+              <li>Social Promo</li>
+            </ul>
+          </div>
+        </div>
 
-    <div class="tag">Machine Learning/AI</div>
-    <div class="tag">Low/No Code</div>
-    <div class="tag">Open Ended</div>
-  </div>
-</div>
+        <div class="prize-card">
+          <h4 class="prize-card-title">⭐️ Latin America Regional Winner</h4>
+          <div class="prize-card-content">
+            <div class="prize-amount">$8,000 in cash</div>
+            <div class="prize-winner-count">1 winner</div>
+            <ul class="prize-details">
+              <li>$8,000 in USD</li>
+              <li>$1,000 in Google Cloud Credits for use with a Cloud Billing Account</li>
+              <li>Virtual Coffee with a Google Team Member</li>
+              <li>Social Promo</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="prize-card">
+          <h4 class="prize-card-title">⭐️ Asia Pacific Regional Winner</h4>
+          <div class="prize-card-content">
+            <div class="prize-amount">$8,000 in cash</div>
+            <div class="prize-winner-count">1 winner</div>
+            <ul class="prize-details">
+              <li>$8,000 in USD</li>
+              <li>$1,000 in Google Cloud Credits for use with a Cloud Billing Account</li>
+              <li>Virtual Coffee with a Google Team Member</li>
+              <li>Social Promo</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="prize-card">
+          <h4 class="prize-card-title">⭐️ Europe, Middle East, Africa Regional Winner</h4>
+          <div class="prize-card-content">
+            <div class="prize-amount">$8,000 in cash</div>
+            <div class="prize-winner-count">1 winner</div>
+            <ul class="prize-details">
+              <li>$8,000 in USD</li>
+              <li>$1,000 in Google Cloud Credits for use with a Cloud Billing Account</li>
+              <li>Virtual Coffee with a Google Team Member</li>
+              <li>Social Promo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="hero-section">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>Hackathon Event</h3>
+        </div>
+
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h4>About</h4>
+            <ul>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Hackathons</h4>
+            <ul>
+              <li><a href="#">Browse hackathons</a></li>
+              <li><a href="#">Explore projects</a></li>
+              <li><a href="#">Host a hackathon</a></li>
+              <li><a href="#">Hackathon guides</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Portfolio</h4>
+            <ul>
+              <li><a href="#">Your projects</a></li>
+              <li><a href="#">Your hackathons</a></li>
+              <li><a href="#">Settings</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Connect</h4>
+            <ul>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Discord</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="display: block; text-align: center;"><small>&copy; 2025 Rahul Sharma. Made with ❤️ using only
+        <strike>HTML5 + CSS</strike> <mark>HTML</mark>.</small>
+    </p>
+  </footer>
 
 </body>
+
 </html>
