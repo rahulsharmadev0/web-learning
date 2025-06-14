@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="align-self: center;"">
+    <h1>Let's Learn Table Tag 👌</h1>
+    <hr>
+    <h2>1. When you are not using anyof thead, tbody, tfoot tag for separation</h2>
+    <table border="" cellspacing=" 2px" cellpadding="12px">
+    <tr>
+        <th>S.no</th>
+        <th>Name</th>
+        <th colspan="2">Education</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Krish</td>
+        <td>BCA</td>
+        <td>80%</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Rahul</td>
+        <td rowspan="2">MCA</td>
+        <td>68%</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Vinod</td>
+        <td>95%</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>John</td>
+        <td>BTech</td>
+        <td>55%</td>
+    </tr>
+    </table>
+    <h2>2. When you use thead, tbody, tfoot</h2>
+    <table border="" cellspacing="2px" cellpadding="12px">
+        <caption><i><b><u>Student Data</u></b></i></caption>
+        <thead style="background-color: black; color: white;">
+            <tr>
+                <th>S.no</th>
+                <th>Name</th>
+                <th colspan="2">Education</th>
+            </tr>
+        </thead>
+        <tbody style="background-color: lightgray;">
+            <tr>
+                <td>1</td>
+                <td>Krish</td>
+                <td>BCA</td>
+                <td>80%</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Rahul</td>
+                <td rowspan="2">MCA</td>
+                <td>68%</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Vinod</td>
+                <td>95%</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>John</td>
+                <td>BTech</td>
+                <td>55%</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                    <center>
+                        All Done
+                    </center>
+                </td>
+            </tr>
+
+        </tfoot>
+    </table>
+
+</body>
+
+</html>
