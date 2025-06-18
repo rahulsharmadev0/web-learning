@@ -1,0 +1,53 @@
+Types of Element
+ 1. Inline
+ 2. Block
+ 3. Inline-Block
+
+p: paragraph tag us to render text on screen it's an block level element
+b: apply bold propery on text it's an inline level element
+s or strick : cut the text horizontaly, it's an inline level element
+h1...h6: it's header and it's block level element, in html we have h1 to h6, higger the header number smaller the text
+img: use to render image from any source internal or external (internal represent the current db, external represent http image url)
+label: use to render text it's inline text 
+button: use to render tapable butten element on screen, it's inline element and mostly use with form tag.
+a: anchor tag, use to open a like on new tab or existing tab, most usefull tag for creating hyperlinks.
+center: make html element/component center within it parent boundary
+br: it's use to go next line also know as break line 
+hr: it a horizontal divider 
+table
+    - th, td
+        - calspane, rowspane, cellpadding
+    - tr
+    - thead, tbody, tfoot
+    - caption
+
+table tag is use to render data in table, under table tag we use 'th'. for table heading and 'td' for table data, generaly we wrap our multiple td or th tag under tr tag stand for table row necessory to render data in multiple rows in table.
+
+we have three more tag like thead, tbody, tfoot use for better layout system. and caption tag use to render handing/title just top on table.
+
+marquee: is tag render customizable scrolling element on the screen element could be any thing text, or image or button..   it's and inline-block level element
+
+form: form tag is use for collection data form user basicly it provide additional feature/benifit to bottom, input tag like bottom tag have property to submit and reset data, and validate all input field in for
+    - input: use for taking imput from user it also as text field
+    - textarea: it's multiline text field
+
+select: it's dropdown tag use to select one option from multiple options
+    - option: options is nothing but the element/text for perticular question.
+    - optGroup: it's use to group our options
+    
+fieldset: it tag is use to wrap our input field or form into a box and have one more tag that is legend use to render title on top of box 
+
+
+ol/ul: 
+    li:
+ol stands for ordered list it have 5 types we can use by using type attribute be like type = A, I, 1, i, a .
+and ul stands for unordered list it have type circle, squire, none.
+under ol/ul tag we use li tag stands for list item.
+
+dl:
+    dd:
+    dt:
+
+dl stands for description list under dl tag we ue dd tag descriptin data tag for render desciption and dt for description title.
+
+

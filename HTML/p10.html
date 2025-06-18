@@ -1,0 +1,78 @@
+<body>
+    <form>
+        <fieldset style="display: inline-block; border-radius: 12px; width: 300px;">
+            <legend>Personal Details</legend>
+            <label for="name">Name: </label>
+            <input type="text" id="name"> <br><br>
+
+            <label for="email">Email: </label>
+            <input type="email" id="email"><br><br>
+
+            <label for="phone">Phone Number: </label>
+            <input type="number" id="phone"><br><br>
+
+            <label for="dob">DOB: </label>
+            <input type="date" id="dob"><br><br>
+
+            <label for="gender">Gender : </label>
+            <input type="radio" name="gender" id="male" value="male"> <label for="male">Male</label>
+            <input type="radio" name="gender" id="female" value="female"> <label for="female">Female</label>
+            <input type="radio" name="gender" id="other" value="other"> <label for="other">Other</label>
+        </fieldset>
+        <br><br>
+
+        <fieldset style="display: inline-block; border-radius: 12px; width: 300px;">
+            <legend>Educational Details</legend>
+            <label for="skills">Skills: </label>
+            <input type="checkbox" value="html"> HTML
+            <input type="checkbox" value="css"> CSS
+            <input type="checkbox" value="js"> JS
+            <input type="checkbox" value="react_js"> React JS
+            <br><br>
+
+            <div style="display: flex; align-items: start;">
+                <label for="feedback">Feedback:</label>
+                <textarea type="text" name="feedback" style="height: 100px;"></textarea>
+            </div>
+
+            <br><br>
+
+            <label for="fav_tech">Favorite Tech.:</label>
+            <select id="fav_tech">
+                <optgroup label="Language">
+                    <option>Java</option>
+                    <option>JavaScript</option>
+                    <option>TypeScript</option>
+                    <option>C/C++</option>
+                    <option>HTML</option>
+                    <option>CSS</option>
+                    <option>Tailwind</option>
+                    <option>Dart</option>
+                    <option>Flutter</option>
+                    <option>Markdown</option>
+                    <option>Json</option>
+                </optgroup>
+                <optgroup label="Database">
+                    <option>PostgreSQL</option>
+                    <option>MySQL</option>
+                    <option>FireStore</option>
+                </optgroup>
+            </select>
+            <br><br>
+            <label for="not_like">Not Liked Tech.</label>
+            <input type="text" list="not_like">
+            <datalist id="not_like">
+                <optgroup label="Database">
+                    <option>PostgreSQL</option>
+                    <option>MySQL</option>
+                    <option>FireStore</option>
+                </optgroup>
+            </datalist>
+        </fieldset>
+        <br><br>
+
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+
+    </form>
+</body>

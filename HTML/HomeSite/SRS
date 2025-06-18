@@ -1,0 +1,16 @@
+# Software Requirements Specification
+
+- The system shall provide hierarchical category navigation for construction materials
+- The system shall support multiple filtering options (brand, price range, quality parameters) which is dependent on material categoty
+- The system shall implement advanced search functionality with autocomplete
+- The system shall provide a persistent shopping cart ("bucket") that stays with users while browsing
+- The system shall allow side-by-side comparison
+- Comparison shall include:
+  - Technical specifications in a tabular format
+  - Price comparison across vendors
+  - Quality ratings and certifications
+  - Delivery timeframes
+  - Warranty information
+- The system shall highlight differences between compared products
+- The system shall generate PDF comparison reports for download
+- The system shall support English and Hindi interfaces

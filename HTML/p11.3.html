@@ -1,0 +1,63 @@
+<body
+    style="display: flex; place-content: center; font-family: sans-serif; background-color: rgba(211, 211, 211, 0.174);">
+    <form style="display: inline-block; width: 400px; padding: 24px; border: 1px solid lightgray;">
+        <h1>Your Basic Info</h1>
+        <Label>Name:</Label> <br>
+        <input type="text" name="name" minlength="3" maxlength="30"
+            style="width: 100%; font-size: medium; box-sizing: border-box; padding: 12px;  margin-top: 8px; margin-bottom: 16px;">
+
+        <Label>Email:</Label> <br>
+        <input type="email" name="email" required
+            style="width: 100%; font-size: medium; box-sizing: border-box; padding: 12px;  margin-top: 8px; margin-bottom: 16px;">
+
+        <Label>Password:</Label> <br>
+        <input type="password" name="password" minlength="8"
+            style="width: 100%; font-size: medium; box-sizing: border-box; padding: 12px;  margin-top: 8px; margin-bottom: 16px;">
+
+        <Label>Age:</Label> <br>
+        <input type="radio" id="below16" name="age" style="margin: 12px 0;"> Under 16
+        <br>
+        <input type="radio" id="above16" name="age"> 16 or Older
+
+        <br><br>
+        <h1>Your Profile</h1>
+        <label>Biography</label>
+        <textarea name="biography"
+            style="width: 100%; font-size: medium; box-sizing: border-box; padding: 12px;  margin-top: 8px; margin-bottom: 16px;"></textarea>
+
+        <label>Course:</label>
+        <select name="course"
+            style="width: 100%; font-size: medium; box-sizing: border-box; padding: 12px; margin-top: 8px; margin-bottom: 16px;">
+            <optgroup label="Computer Science">
+                <option value="web-development">Web Development</option>
+                <option value="data-structures">Data Structures</option>
+                <option value="algorithms">Algorithms</option>
+                <option value="database-systems">Database Systems</option>
+            </optgroup>
+            <optgroup label="Mathematics">
+                <option value="calculus">Calculus</option>
+                <option value="statistics">Statistics</option>
+                <option value="linear-algebra">Linear Algebra</option>
+                <option value="discrete-math">Discrete Mathematics</option>
+            </optgroup>
+            <optgroup label="Business">
+                <option value="marketing">Marketing</option>
+                <option value="finance">Finance</option>
+                "" <option value="management">Management</option>
+                <option value="economics">Economics</option>
+            </optgroup>
+        </select>
+
+        <label>Intrests:</label> <br>
+        <input type="checkbox" name="eng" id="idx_engineering" style="margin: 12px 0;" value="engineering"><label for="idx_engineering">  Engineering</label>
+        <br>
+        <input type="checkbox" name="eng" id="idx_business" value="business"><label for="idx_business"> Business</label>
+
+        <button style="padding: 12px; margin-top: 32px; width: 100%; box-sizing: border-box; background-color: cadetblue;
+        border: 0px solid; font-size: large; color: white;">
+            Submit
+        </button>
+
+
+    </form>
+</body>
