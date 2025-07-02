@@ -1,0 +1,24 @@
+h1 {
+    color: maroon;
+}
+
+article{
+    font-size: medium;
+}
+
+article::first-letter {
+    font-size: 2em;
+}
+
+h1, p, label{
+    font-size: large;
+    color:  red;
+}
+
+#xid {
+    color: blue;
+}
+
+.class1{
+    color: blueviolet;
+}

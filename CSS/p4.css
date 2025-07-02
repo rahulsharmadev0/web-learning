@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libertinus+Mono&family=Manufacturing+Consent&family=Neuton:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&family=Noto+Sans+JP&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap");
+
+/* 
+ * -----------
+ * Task2
+ * -----------
+ */
+.task1 > table {
+  border-collapse: collapse;
+
+  font-family: "Manufacturing Consent", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.task1 > table th,
+.task1 > table td {
+  padding: 16px 42px;
+}
+.task1 > table th {
+  background-color: orangered;
+  color: white;
+}
+.task1 > table tbody tr:nth-child(odd) {
+  background-color: lightgrey;
+}
+
+/* 
+ * -----------
+ * Task2
+ * -----------
+ */
+.task2 > table {
+  border-collapse: collapse;
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+.task2 > table th,
+.task2 > table td {
+  padding: 16px 42px;
+  border: 2px solid lightgreen;
+}
+.task2 > table th {
+  background-color: green;
+  color: white;
+}
+.task2 > table td:first-child {
+  font-weight: bold;
+}
+.task2 > table tbody tr:nth-child(even) {
+  background-color: lightgrey;
+}
+.task2 > table caption {
+  font-size: x-large;
+  font-weight: bold;
+  line-height: 2.5em;
+}
+
+/* 
+ * -----------
+ * Task3
+ * -----------
+ */
+.task3 > table {
+  border-collapse: collapse;
+  font-family: "Neuton", serif;
+  font-weight: 200;
+  font-style: normal;
+}
+.task3 > table th,
+.task3 > table td {
+  padding: 16px 42px;
+  border: 2px solid rgba(0, 0, 255, 0.058);
+}
+.task3 > table th {
+  background-color: blue;
+  color: white;
+}
+.task3 > table td:nth-child(2n + 1) {
+  background-color: rgba(0, 0, 255, 0.076);
+}
+.task3 > table td:first-child {
+  font-weight: bold;
+}
+
+.task3 > table td button {
+  font-weight: bold;
+  color: white;
+  background-color: blue;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.task3 > table caption {
+  font-size: x-large;
+  line-height: 2.5em;
+}
+
+/* 
+ * -----------
+ * Task4
+ * -----------
+ */
+.task4 > table {
+  border-collapse: collapse;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.task4 > table th,
+.task4 > table td {
+  width: 150px;
+  height: 42px;
+  padding: 6px;
+
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+.task4 > table th {
+  background-color: rgb(0, 207, 0);
+  color: white;
+  border: 2px solid black;
+}
+
+.task4 > table tbody tr:nth-child(even) {
+  background-color: lightyellow;
+}
+
+.task4 caption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 
+ * -----------
+ * Task5
+ * -----------
+ */
+.task5 > table {
+  border-collapse: collapse;
+  font-family: "Libertinus Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+.task5 > table th,
+.task5 > table td {
+  padding: 16px 42px;
+}
+.task5 > table th {
+  color: gold;
+}
+.task5 > table tr:nth-child(odd) {
+  background-color: #00576b;
+}
+
+#hindi {
+  font-family: "Tiro Devanagari Hindi", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2em;
+}
+
+#japan {
+  font-family: "Noto Sans JP";
+  font-weight: 600;
+  font-style: normal;
+  font-size: 52px;
+}
+
+#box {
+  background-color: blue;
+  width: 1000px;
+  height: 700px;
+  border: 6px solid black;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-image: url("https://assets.telegraphindia.com/telegraph/2025/May/1747225389_shinchan-movie.jpg");
+}
+
+#memo{
+  width: 700px;
+  height: 500px;
+  border: 16px solid;
+
+  background-position: center;
+  border-style: groove;
+  border-top-color: blanchedalmond;
+  border-bottom-color:  burlywood;
+  border-left: 24px ridge cornflowerblue ;
+  border-right: 24px ridge cornflowerblue ;
+  border-bottom-left-radius: 100px;
+  border-top-right-radius: 100px;
+  margin: 12px;
+  /* background-repeat: no-repeat; */
+  background-size: 30%;
+  background-image: url("https://avatars.githubusercontent.com/u/95410264?v=4");
+}

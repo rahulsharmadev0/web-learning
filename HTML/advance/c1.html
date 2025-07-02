@@ -1,0 +1,71 @@
+<body>
+    <h2>Progress Tag:</h2>
+    <progress value="70" max="100"></progress>
+    <br><br>
+
+    <form oninput="result.value = parseInt(a.value) + parseInt(b.value)">
+        <label>Addition:</label>
+        <br>
+        <input type="number" name="a" placeholder="eg. 2">
+        +
+        <input type="number" name="b" placeholder="eg. 34">
+        =
+        <output name="result"></output>
+    </form>
+
+    <label>Multiplication</label><br>
+    <form oninput="result.value = parseFloat(a.value)*parseFloat(b.value)* parseFloat(c.value)">
+        <input type="number" name="a" placeholder="eg. 2">
+        *
+        <input type="number" name="b" placeholder="eg. 34">
+        *
+        <input type="number" name="c" placeholder="eg. 34">
+        =<output name="result"></output>
+    </form>
+
+    <label>BMI Calculator:</label>
+    <form
+        oninput="result.value = parseFloat(w.value)/(parseFloat(h.value)*0.01)**2; document.getElementById('bmi-meter').value = result.value">
+        <label>Height (cm): </label>
+        <input type="number" name="h" placeholder="eg. 2">
+
+        <label>Weight (Kg): </label>
+        <input type="number" name="w" placeholder="eg. 34"> =
+
+        <output name="result"></output>
+        <meter id="bmi-meter" value="0" min="0" max="100" high="28" optimum="25" low="18"></meter>
+
+    </form>
+
+    <br>
+    <h2>Meter Tag:</h2>
+    <p>Battery Level: <meter value="0.6" min="0" max="1" low="2" high="9" optimum="7"></meter></p>
+    <p>Temperature: <meter value="20" min="0" max="100" low="30" high="80" optimum="60"></meter></p>
+
+
+
+    <h2>Table Calgroup Tag:</h2>
+    <table border="1">
+        <colgroup>
+            <col style="background-color: #9f9;"> <!-- Second column -->
+            <col span="2" style="background-color: #99f;"> <!-- Third column -->
+        </colgroup>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Role</th>
+        </tr>
+        <tr>
+            <td>Rahul</td>
+            <td>25</td>
+            <td>Developer</td>
+        </tr>
+        <tr>
+            <td>Anita</td>
+            <td>29</td>
+            <td>Designer</td>
+        </tr>
+    </table>
+
+
+</body>

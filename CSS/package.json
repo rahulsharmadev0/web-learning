@@ -1,0 +1,16 @@
+{
+  "name": "bewakoof-image-downloader",
+  "version": "1.0.0",
+  "description": "Download all images from Bewakoof.com HTML page",
+  "main": "script.js",
+  "scripts": {
+    "start": "node script.js",
+    "download": "node script.js"
+  },
+  "keywords": ["image", "downloader", "bewakoof", "scraper"],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

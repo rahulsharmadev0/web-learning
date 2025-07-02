@@ -1,0 +1,108 @@
+/* 
+~ (Descendent)
++ (direct child)
+> (adjecent sibling)
+  (General Sibling)
+
+  -----Psudo Element---
+  apply effect on pice of ::-webkit-progress-inner-element
+  eg. marker of list, first letter of text
+::before
+::first-letter
+::first-line
+::marker
+::selection
+
+TagName[attribute] --- Attribute presents
+TagName[attribute = "value"] --- exect match
+TagName[attribute ^= "value"] --- start with
+TagName[attribute $= "value"] --- end with
+TagName[attribute *= "value"] --- contain value
+*/
+
+article > p {
+  color: blueviolet;
+  background-color: beige;
+}
+
+div > p:nth-child(2n):hover {
+  display: inline;
+  color: lightcyan;
+  background-color: chocolate;
+}
+div > p:last-child {
+  display: inline;
+  color: lightcyan;
+  background-color: chocolate;
+}
+
+div > p:first-child {
+  display: inline;
+  color: lightcyan;
+  background-color: chocolate;
+}
+#hit {
+  display: none;
+}
+
+#inputHit:checked + #hit {
+  display: block;
+  background-color: burlywood;
+  color: black;
+}
+
+.ab::before {
+  content: "Hi, ";
+}
+
+.ab::after {
+  content: " (EOL)";
+}
+
+.ab::first-letter {
+  font-size: 2em;
+  color: red;
+}
+
+#a12::selection {
+  color: blue;
+  background-color: aqua;
+}
+
+#a12::first-line {
+  font-family: monospace;
+}
+
+li::marker {
+  color: brown;
+}
+
+span {
+  padding: 12px;
+  font-size: 3em;
+  border: 8px;
+}
+
+
+
+span[id ="heart eyes emojis"] {
+  border: dotted blueviolet;
+}
+span[id^="happy"] {
+  border: solid blue;
+}
+span[id^="happy"] {
+  border: solid blue;
+}
+
+span[id$="okay"] {
+  border: solid violet;
+}
+
+span[id*="ing"] {
+  border: solid red;
+}
+
+space{
+height: 12px;
+}
