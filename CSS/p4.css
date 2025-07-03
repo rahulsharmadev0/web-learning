@@ -198,3 +198,26 @@
   background-size: 30%;
   background-image: url("https://avatars.githubusercontent.com/u/95410264?v=4");
 }
+/* 
+#dd1{
+  display: inline-block;
+  border-radius: 32px;
+  border: solid;
+} */
+#dd1 > table{
+  border-collapse: separate;
+  border: 1px solid red;
+  background-color: lightblue;
+  border-spacing: 32px, 32px;
+  padding: 12px;
+  border-radius: 12%;
+  clip-path: view-box;
+
+}
+
+#dd1 > table td {
+  border: 1px solid gray;
+  word-spacing: 6px;
+  letter-spacing: 4px;
+  
+}
