@@ -1,0 +1,39 @@
+h1{
+    margin: 52px;
+}
+h2{
+    margin: 0;
+}
+
+h3{
+    margin: 12px auto; /* auto not apply ?*/
+}
+
+i{
+    margin: 12px auto;
+}
+
+div{
+  margin: auto; /* auto not apply ?*/
+}
+
+section{
+    padding: 32px;
+    border: 2px solid red;
+}
+
+#nav p{
+    display: inline-block;
+    background-color: teal;
+    padding: 12px 64px;
+    transition: ease-in-out;
+    
+}
+#nav p:hover{
+    display: inline-block;
+    background-color: rgb(1, 44, 44);
+    color:white;
+    padding: 12px;
+    padding: 12px 64px;
+    transition: ease-in-out;
+}
