@@ -1,170 +1,363 @@
 /* Reset and base styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Common utility classes */
 .spacer {
-    flex: 1;
-    min-width: 20px;
+  flex: 1;
+  min-width: 20px;
 }
 
 .vdivider {
-    height: 42px;
-    width: 2px;
-    background-color: #c3c3c3;
-    margin: 0 5px;
-    align-self: center;
+  height: 42px;
+  width: 2px;
+  background-color: #c3c3c3;
+  margin: 0 5px;
+  align-self: center;
 }
 
 .icon {
-    width: 32px;
-    height: 32px;
+  width: 32px;
+  height: 32px;
+}
+#nav1 .icon {
+  width: 32px;
+  height: 32px;
+}
+
+.logo {
+  height: 42px;
+  font-size: 24px;
+  color: #374151;
+  font-weight: 700;
+  margin: 0;
 }
 
 /* Common button styles */
 .button {
-    padding: 12px 24px;
-    font-weight: 500;
-    border-radius: 100px;
-    background-color: rgb(106, 0, 255);
-    border: none;
-    color: white;
-    font-size: medium;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+  padding: 12px 24px;
+  font-weight: 500;
+  border-radius: 100px;
+  background-color: rgb(106, 0, 255);
+  border: none;
+  color: white;
+  font-size: medium;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Common navigation styles */
+#nav1,
+#nav2,
+#nav3 {
+  height: 72px;
+  width: 100%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.527);
+  padding: 0px 56px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 /* Navigation 1 Styles */
 #nav1 {
-    height: 72px;
-    width: 100%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.527);
-    padding: 0px 56px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    box-sizing: border-box;
+  gap: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #nav1 > img {
-    height: 120px;
-}
-
-#nav1 > img.icon {
-    width: 32px;
-    height: 32px;
+  height: 120px;
 }
 
 #nav1 > a {
-    font-size: large;
-    text-decoration: none;
-    font-weight: 600;
+  font-size: large;
+  text-decoration: none;
+  font-weight: 600;
 }
+
 /* Navigation 2 Styles */
 #nav2 {
-    height: 72px;
-    width: 100%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.527);
-    padding: 0px 56px;
-    display: flex;
-    align-items: center;
-    background-color: black;
-    gap: 32px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    letter-spacing: 4%;
-    box-sizing: border-box;
+  background-color: black;
+  gap: 32px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  letter-spacing: 4%;
 }
 
 #nav2 > img {
-    height: 42px;
+  height: 42px;
 }
 
 #nav2 > a {
-    font-size: medium;
-    text-decoration: none;
-    font-weight: 400;
-    color: white;
+  font-size: medium;
+  text-decoration: none;
+  font-weight: 400;
+  color: white;
 }
 
 /* Navigation 3 Styles */
 #nav3 {
-    height: 72px;
-    width: 100%;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 0px 56px;
-    display: flex;
-    align-items: center;
-    background-color: #DFF7FF;
-    gap: 25px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    box-sizing: border-box;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #dff7ff;
+  gap: 25px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 #nav3 > img {
-    height: 42px;
+  height: 42px;
 }
 
 #nav3 > a {
-    font-size: 16px;
-    text-decoration: none;
-    font-weight: 500;
-    color: #6b7280;
-    transition: color 0.2s ease;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 500;
+  color: #6b7280;
+  transition: color 0.2s ease;
 }
 
 #nav3 > a:hover {
-    color: #374151;
-}
-
-#nav3 > p {
-    font-size: 24px;
-    color: #374151;
-    font-weight: 700;
-    margin: 0;
+  color: #374151;
 }
 
 #nav3 > .button {
-    padding: 12px 24px;
-    font-weight: 600;
-    border-radius: 8px;
-    background-color: #3b82f6;
-    border: none;
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+  padding: 12px 24px;
+  font-weight: 600;
+  border-radius: 8px;
+  background-color: #3b82f6;
+  font-size: 14px;
 }
 
 #nav3 > .button:hover {
-    background-color: #2563eb;
+  background-color: #2563eb;
 }
 
 /* Input field styling for nav3 */
 #nav3 > input[type="text"] {
-    padding: 8px 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 4px;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s ease;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
 }
 
 #nav3 > input[type="text"]:focus {
-    border-color: #3b82f6;
+  border-color: #3b82f6;
 }
 
-.nav-section{
-    margin-bottom: 1em;
-    border: 2px dotted black;
+.nav-section {
+  margin-bottom: 1em;
+  border: 2px dotted black;
 }
-.nav-section > h2{
-    margin-bottom: 1em;
-     margin: 12px 0px;
+
+.nav-section > h2 {
+  margin: 12px 0px;
 }
+
 .nav-section > nav {
-    margin-bottom: 2em;
+  margin-bottom: 2em;
+}
+
+/* Navigation 4 & 5 common styles */
+#nav4,
+#nav5 {
+  width: 100%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+#nav4 > header,
+#nav5 > header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+#nav4 > footer,
+#nav5 > footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+}
+
+#nav4 > footer a,
+#nav5 > footer a {
+  height: 42px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+/* Navigation 4 Styles */
+#nav4 {
+  height: min-content;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+#nav4 > header {
+  padding: 12px;
+}
+
+#nav4 > header a {
+  height: 100%;
+  padding: 0 32px;
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+
+#nav4 > footer {
+  background-color: blue;
+  color: white;
+  padding: 0px 12px;
+}
+
+#nav4 > footer .icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 4px;
+}
+
+#nav4 > footer a {
+  padding: 0px 12px;
+  color: white;
+}
+
+#nav4 .cc {
+  width: 18px;
+  height: 18px;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+
+/* Navigation 5 Styles */
+#nav5 {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  background-color: #ffffff;
+}
+
+#nav5 > header {
+  height: 66px;
+  padding: 0px 16px;
+  background-color: #ffffff;
+}
+
+#nav5 > header .logo {
+  height: 40px;
+  margin-right: 20px;
+}
+
+#nav5 > header a {
+  height: 100%;
+  padding: 0px 16px;
+  text-decoration: none;
+  color: #282a35;
+  font-weight: 500;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+#nav5 > header a:hover {
+  background-color: #04aa6d;
+  color: white;
+}
+
+#nav5 > header a.sp {
+  height: 42px;
+  border-radius: 24px;
+  background-color: transparent;
+}
+
+#nav5 > header a.sp:hover {
+  background-color: #cccccc;
+  color: #282a35;
+}
+
+#nav5 > header input[type="text"] {
+  padding: 8px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 25px;
+  font-size: 14px;
+  outline: none;
+  width: 200px;
+  margin: 0 12px;
+  background-color: #f1f1f1;
+}
+
+#nav5 > header input[type="text"]:focus {
+  border-color: #04aa6d;
+  background-color: white;
+}
+
+#nav5 > header .icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  filter: invert(50%) sepia(85%) saturate(1000%) hue-rotate(220deg)
+    brightness(90%) contrast(95%);
+}
+
+#nav5 > footer {
+  background-color: #282a35;
+  color: white;
+  padding: 0px 16px;
+  min-height: 50px;
+}
+
+#nav5 > footer a {
+  height: 50px;
+  padding: 0px 16px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin: 2px;
+}
+
+#nav5 > footer a:hover {
+  background-color: black;
+}
+
+/* Sign-in button for nav5 */
+#nav5 > header .sign-in-btn {
+  padding: 12px 16px;
+  background-color: #04aa6d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s ease;
+  margin-left: 8px;
+}
+
+#nav5 > header .sign-in-btn:hover {
+  background-color: #059862;
+}
+
+#nav5 > header .sign-in-btn img {
+  width: 14px;
+  height: 14px;
+  color: white;
+  fill: white;
+  filter: none;
 }
