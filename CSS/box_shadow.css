@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#box1 {
+    display: inline-block;
+    margin: 32px;
+  padding: 12px 32px;
+  border-radius: 12px;
+
+  font-size: xx-large;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.451);
+  box-shadow: 1px 1px 10px 5px red inset,1px 2px 5px 6px black, 2px 4px 10px 8px rebeccapurple;
+}

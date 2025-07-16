@@ -22,11 +22,12 @@
 .icon {
   width: 32px;
   height: 32px;
+   flex-shrink: 0;
 }
-#nav1 .icon {
+/* #nav1 .icon {
   width: 32px;
   height: 32px;
-}
+} */
 
 .logo {
   height: 42px;
@@ -59,7 +60,7 @@
   padding: 0px 56px;
   display: flex;
   align-items: center;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 /* Navigation 1 Styles */
@@ -169,7 +170,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 #nav4 > header,
@@ -308,6 +309,8 @@
   width: 16px;
   height: 16px;
   margin-right: 6px;
+
+  /*! this suggested by ChatGPT  */
   filter: invert(50%) sepia(85%) saturate(1000%) hue-rotate(220deg)
     brightness(90%) contrast(95%);
 }

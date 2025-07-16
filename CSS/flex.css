@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#complexBox {
+  display: flex;
+  width: 600px;
+  border: 2px dotted blue;
+  flex-wrap: wrap;
+  font-size: large;
+  margin: 10em auto;
+}
+
+#complexBox div {
+  height: 100px;
+  flex: 1 1 auto;
+  border: 2px solid blue;
+  background-color: rgb(232, 235, 255);
+  min-width: 16.666667%; /* [ 100/6 ]*/
+  padding: 8px; 
+}
+#complexBox div:nth-child(2) {
+  flex: 3 0 auto;
+}
+#complexBox div:last-child {
+  min-width: 100%;
+}

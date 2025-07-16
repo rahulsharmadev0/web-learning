@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration-line: none;
+   
+}
+
+.wSpace{
+    margin: auto;
+}
+
+#nav{
+    display: flex;
+    padding: 12px 10%;
+    align-items: center;
+    column-gap: 12px;   
+    border-bottom: 1px solid #E8E8E8;
+    position: relative;
+    top: 0;
+    width: 100%;
+    background-color: white;
+}
+#nav > a:hover{
+    border-bottom: 3px solid #FFD232;
+}
+
+input{
+    padding: 8px 8px;
+    min-width: 250px;
+    font-size: 14px;
+    border: none;
+    background-color: #EAEAEA;
+    border-radius: 4px;
+}
+
+#genderSelecter{
+    border-radius: 100px;
+    border: 2px solid #E8E8E8;
+    padding: 8px;
+    display: inline;
+}
+
+#nav2{
+
+}
+
