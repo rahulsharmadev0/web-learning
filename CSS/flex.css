@@ -27,3 +27,12 @@
 #complexBox div:last-child {
   min-width: 100%;
 }
+
+#complexBox div:nth-child(3) {
+    opacity: 0;
+}
+
+#complexBox div:nth-child(3):hover {
+    opacity: 1;
+}
+
