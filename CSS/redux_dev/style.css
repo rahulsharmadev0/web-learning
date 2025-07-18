@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5em;
+  font-size: 16px;
+}
+a{
+  text-decoration-line: none;
+  color: black;
+}
+a:hover{
+  color:  rgb(118, 74, 188);
+}
+
+h1 {
+  font-size: 48px;
+}
+h2{
+  font-size: 24px;
+}
+h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+#navTop {
+  height: 56px;
+  min-width: 100%;
+  background-image: url(assets/course-callout-wide.svg);
+  background-size: cover;
+  background-position: center;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+  padding: 12px;
+  font-size: large;
+}
+nav input{
+  padding: 8px;
+  border-radius: 8px;
+  border: .5px solid black;
+  box-shadow: none;
+  font-size: medium;
+}
+
+nav div:first-child {
+  display: flex;
+  align-items: center;
+  font-size: large;
+  font-weight: 600;
+  color: rgb(118, 74, 188);
+  flex: 1 0 auto;
+}
+
+#logo {
+  width: 32px;
+  height: 32px;
+}
+
+#mainContent {
+  display: flex;
+  min-height: 350px;
+  color: white;
+  background-color: rgb(118, 74, 188);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.filledBtn {
+  margin: 1em;
+  padding: 12px 28px;
+  font-size: large;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 0 none;
+}
+
+#features {
+  display: flex;
+  margin: 2em 4em;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+.displayContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: calc(25% - 2em);
+  gap: 1em;
+}
+
+.displayContainer img {
+  min-height: 120px;
+  max-width: 120px;
+}
+.displayContainer h2 {
+  text-align: center;
+}
+
+#course-callout {
+  display: block;
+  margin: 1.5em auto;
+  max-width: 65%;
+}
+
+#other-features {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 3em;
+}
+
+
+#other-features  h2 {
+  flex: 1 0 auto;
+  min-width: 100%;
+  text-align: center;
+  justify-content: center;
+  padding: 12px;
+    
+}
+
+#other-features  div {
+  flex: 1 1 auto;
+  justify-content: center;
+  text-align: center;
+}
+
+#other-features div h2 {
+  color: rgb(118, 74, 188);
+}
+
+
+footer{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(245, 246, 247);
+  padding: 2.5em;
+}
+
+footer div{
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 1em;
+  color: rgb(86, 86, 86);
+}
+
+footer div:last-child{
+  display: flex;
+  flex: 1 0 auto;
+  min-width: 100%;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+footer div:last-child #logo{
+  background-image: url(assets/redux.svg);
+  width: 56px;
+  height: 56px;
+  opacity: 0.5;
+}
+
+#netlify{
+  background-image: url(assets/netlify-color-accent.svg);
+  min-height: 56px;
+  background-repeat: no-repeat;
+}
+
+
+
+
+
+
