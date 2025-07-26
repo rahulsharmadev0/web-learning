@@ -1,0 +1,362 @@
+:root {
+    --primary-color: #0078d4;
+    --primary-hover: #106ebe;
+    --text-primary: #262626;
+    --text-secondary: #323130;
+    --text-muted: #616161;
+    --bg-light: #f8f8f8;
+    --bg-lighter: #f2f2f2;
+    --border-light: #e5e5e5;
+    --border-medium: #ccc;
+    --container-width: 1600px;
+    --padding-standard: 24px;
+    --gap-standard: 24px;
+    --gap-large: 48px;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --transition: 0.2s ease;
+    --border-radius: 2px;
+    --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: var(--font-family);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Container Mixin */
+.container {
+    max-width: var(--container-width);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--padding-standard);
+}
+
+/* Navigation */
+nav {
+    background: white;
+    border-bottom: 1px solid var(--border-light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 54px;
+}
+
+.nav-container, .banner-content, .showcase-content {
+    max-width: var(--container-width);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--padding-standard);
+}
+
+.logo {
+    background: url(https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png) no-repeat center / cover;
+    width: 108px;
+    height: 23px;
+    margin-right: var(--padding-standard);
+}
+
+.nav-links, .nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.nav-actions {
+    margin-left: auto;
+}
+
+.nav-links a, .nav-actions a {
+    padding: 8px 12px;
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 400;
+    transition: color var(--transition);
+}
+
+.nav-links a:hover, .nav-actions a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Sections */
+.mainBanner, #showcase-card {
+    width: 100%;
+    height: 600px;
+    background: center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.mainBanner {
+    background-image: url(https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-AI-11Ed-Sapphire-MC001-3000x1682:VP5-1920x600);
+}
+
+#showcase-card {
+    background-image: url(https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Slim-Multi-Canvas-Game-Pass-APR-2025:VP5-1596x600);
+    justify-content: flex-start;
+}
+
+.banner-content, .showcase-content {
+    color: white;
+}
+
+.banner-content h1, .showcase-content h2 {
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 72px;
+    margin-bottom: var(--padding-standard);
+}
+
+.banner-content h1 {
+    max-width: 800px;
+}
+
+.showcase-content {
+    max-width: 600px;
+}
+
+.banner-content p, .showcase-content p {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: var(--padding-standard);
+    max-width: 600px;
+}
+
+/* Icon List & Business Section */
+#iList1, .horizontal-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-large);
+    padding: var(--gap-large) var(--padding-standard);
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.horizontal-list {
+    gap: var(--gap-standard);
+    flex-wrap: wrap;
+}
+
+#iList1 a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-color);
+    font-size: 11px;
+    font-weight: 400;
+    text-align: center;
+    transition: opacity var(--transition);
+}
+
+#iList1 a:hover {
+    opacity: 0.8;
+}
+
+#iList1 img {
+    width: 40px;
+    height: 40px;
+}
+
+#iList1 span {
+    max-width: 76px;
+}
+
+/* Card Styles */
+.horizontal-list div {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 450px;
+    background: #fff;
+    box-shadow: var(--shadow-light);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.horizontal-list div:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.horizontal-list img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+
+.horizontal-list h2 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    margin: var(--padding-standard) var(--padding-standard) 8px var(--padding-standard);
+    color: var(--text-primary);
+}
+
+.horizontal-list p {
+    font-size: 15px;
+    line-height: 20px;
+    margin: 0 var(--padding-standard) var(--padding-standard) var(--padding-standard);
+    color: var(--text-secondary);
+    flex-grow: 1;
+}
+
+/* Business Section */
+.business-section {
+    background: var(--bg-light);
+    padding: 60px 32px;
+}
+
+.business-section h1 {
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: var(--gap-large);
+    color: var(--text-primary);
+}
+
+/* Button Styles */
+.btn, .horizontal-list a {
+    display: inline-flex;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius);
+    color: white;
+    background: var(--primary-color);
+    width: fit-content;
+    font-size: 15px;
+    font-weight: 600;
+    gap: 8px;
+    transition: background-color var(--transition);
+    cursor: pointer;
+}
+
+.horizontal-list a {
+    margin: 0 var(--padding-standard) var(--padding-standard) var(--padding-standard);
+}
+
+.btn:hover, .horizontal-list a:hover {
+    background: var(--primary-hover);
+}
+
+/* Showcase Actions */
+.showcase-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-standard);
+    flex-wrap: wrap;
+}
+
+.watch-video {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    transition: opacity var(--transition);
+}
+
+.watch-video:hover {
+    opacity: 0.8;
+}
+
+.watch-video .icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Footer & Follow Container */
+footer, #follow-container {
+    padding: 40px 40px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--bg-lighter);
+    font-size: 11px;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+footer ul {
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+}
+
+footer li {
+    color: var(--text-muted);
+    list-style: none;
+    line-height: 16px;
+    cursor: pointer;
+    transition: color var(--transition);
+}
+
+footer li:hover {
+    color: var(--primary-color);
+}
+
+footer li:first-child {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+footer li:first-child:hover {
+    color: var(--text-primary);
+    cursor: default;
+}
+
+#follow-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: var(--gap-large) var(--padding-standard);
+    justify-content: flex-start;
+}
+
+.icon {
+    width: 28px;
+    height: 28px;
+}
+
+/* Back to Top Button */
+#back-to-top-btn {
+    align-self: center;
+    background: var(--bg-lighter);
+    color: var(--text-primary);
+    border: 1px solid var(--border-medium);
+}
+
+#back-to-top-btn:hover {
+    background: #e6e6e6;
+    color: var(--text-primary);
+}
+
+#back-to-top-btn img {
+    width: 16px;
+    height: 16px;
+    filter: invert(0.2);
+}
