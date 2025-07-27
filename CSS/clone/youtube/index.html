@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Clone</title>
+  <style>
+    @import url(./style.css);
+  </style>
+</head>
+
+<body>
+  <!-- YouTube Header -->
+  <header class="yt-header">
+    <button class="menu-btn">
+      <img src="assets/menu.svg" alt="Menu" class="icon">
+    </button>
+    <a href="#" class="logo-link">
+      <img src="assets/youtube.svg" alt="YouTube" class="logo-img icon" />
+      <span class="logo-country">IN</span>
+    </a>
+
+    <span class="space"></span>
+
+    <form class="search-bar">
+      <input type="text" placeholder="Search" />
+      <button type="submit">
+        <img src="assets/search.svg" alt="Search" class="icon">
+      </button>
+      <button type="button" class="mic-btn">
+        <img src="assets/mic.svg" alt="Mic" class="icon">
+      </button>
+    </form>
+
+    <span class="space"></span>
+
+    <div class="header-actions">
+      <a href="#" class="sign-in-header-btn">
+        <img src="assets/user.svg" alt="Sign in" class="icon">
+        <span>Sign in</span>
+      </a>
+    </div>
+  </header>
+
+  <nav class="yt-navbar">
+    <ul>
+      <li><a href="#">
+          <img src="assets/home.svg" alt="Home"> Home</a></li>
+      <li><a href="#"><img src="assets/shorts.svg" alt="Shorts"> Shorts</a></li>
+      <li><a href="#"><img src="assets/subscriptions.svg" alt="Subscriptions"> Subscriptions</a></li>
+      <hr>
+      <li><a href="#"><img src="assets/you.svg" alt="You"> You</a></li>
+      <li><a href="#"><img src="assets/history.svg" alt="History"> History</a></li>
+      <hr>
+      <li class="signin">
+        <p>Sign in to like videos, comment, and subscribe.</p>
+        <a href="#" id="sign-in-btn">
+          <img src="assets/sign-in.svg" alt="Sign in" class="icon">
+          <span>Sign in</span>
+        </a>
+      </li>
+      <hr>
+      <li class="explore-title">Explore</li>
+      <li><a href="#"><img src="assets/shop.svg" alt="Shopping"> Shopping</a></li>
+      <li><a href="#"><img src="assets/music.svg" alt="Music"> Music</a></li>
+      <li><a href="#"><img src="assets/movies.svg" alt="Movies"> Movies</a></li>
+      <li><a href="#"><img src="assets/live.svg" alt="Live"> Live</a></li>
+      <li><a href="#"><img src="assets/gaming.svg" alt="Gaming"> Gaming</a></li>
+      <li><a href="#"><img src="assets/news.svg" alt="News"> News</a></li>
+      <li><a href="#"><img src="assets/sports.svg" alt="Sports"> Sports</a></li>
+      <li><a href="#"><img src="assets/learning.svg" alt="Courses"> Courses</a></li>
+      <li><a href="#"><img src="assets/fashion-beauty.svg" alt="Fashion & Beauty"> Fashion & Beauty</a></li>
+      <li><a href="#"><img src="assets/podcasts.svg" alt="Podcasts"> Podcasts</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main content area -->
+  <main class="main-content">
+    <div id="video-grid" class="video-grid">
+      <!-- Videos will be rendered here by JavaScript -->
+      <div id="loading" class="loading">Loading videos...</div>
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+
+</html>
