@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #48a30012;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 32px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 660px;
+  height: 810px;
+  background-color: #fbfbfb;
+  color: black;
+  padding: 32px;
+  gap: 24px;
+  border-radius: 24px;
+}
+h1 {
+  font-size: 48px;
+  font-weight: bolder;
+}
+h1 > span{
+  color: #48a300;
+}
+
+h2 {
+  display: inline;
+  font-size: 32px;
+  font-weight: bolder;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#addButton{
+  width: 32px;
+  height: 32px;
+  margin: 4px;
+  background-image: url("https://www.svgrepo.com/show/524223/add-square.svg");
+  background-size: cover;
+  transition: width 0.2s ease, height 0.2s ease;
+}
+#addButton:hover{
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+
+.subtxt {
+  color: #858585;
+}
+
+.progress {
+  background-color: #48a3001a;
+  border-radius: 15px;
+  width: 100%;
+  height: 30px;
+}
+.progress-value {
+  background-color: #48a300;
+  width: 0%;
+  transition: width 0.3s ease-in-out;
+}
+
+#warningTxt {
+  display: none;
+  color: red;
+}
+
+.uncheck {
+  width: 18px;
+  height: 18px;
+  border: 2px solid;
+  border-radius: 32px;
+  font-size: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #d9d9d9;
+}
+
+.check {
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+  border: 2px solid;
+  border-radius: 32px;
+  color: #48a300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#options {
+  max-height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.option {
+  display: flex;
+  width: 100%;
+  height: 82px;
+  border: 1px solid #0000001a;
+  border-radius: 15px;
+  background-color: white;
+  padding-left: 15px;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.option input {
+  font-weight: 500;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+
+.quoteTxt {
+  margin: auto;
+  font-weight: 600;
+  
+}
+
+.copywriteTxt {
+  margin: 0 auto;
+  font-size: 10px;
+  font-weight: 500;
+  font-family: monospace;
+  color: #858585;
+}
+
+@media (max-width: 700px) {
+  .main-container {
+    width: 95vw;
+    height: auto;
+    padding: 16px;
+    border-radius: 12px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 22px;
+  }
+  .option {
+    height: 64px;
+    padding-left: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+  .progress {
+    height: 20px;
+  }
+}
