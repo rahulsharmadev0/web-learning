@@ -1,0 +1,13 @@
+button {
+  margin: 10px;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  border: 1px solid;
+}
+
+#counter {
+  margin: 8px;
+  font-size: 64px;
+  font-weight: 600;
+}
