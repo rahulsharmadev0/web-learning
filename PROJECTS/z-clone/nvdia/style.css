@@ -1,0 +1,293 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: NVIDIA-NALA, Arial, Helvetica, Sans-Serif;
+  line-height: 1.4em;
+}
+.icon {
+  width: 28px;
+  height: 28px;
+}
+
+.logo {
+  width: 110px;
+  height: 44px;
+  background-image: url(assets/nvdia-logo.svg);
+  background-size: cover;
+}
+
+.nav-bar {
+  height: 56px;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+
+  font-weight: 400;
+  line-height: 22px;
+}
+.nav-bar > div {
+  display: flex;
+  align-items: center;
+}
+
+.nav-bar .icon {
+  cursor: pointer;
+  margin: 8px;
+  width: 24px;
+  height: 24px;
+}
+
+.nav-bar span {
+  /* display: flex; */
+  padding: 0 16px;
+  color: #666;
+  cursor: pointer;
+}
+.nav-bar span:hover {
+  color: #1a1a1a;
+}
+
+.carousel-slider {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 30px 0;
+  scroll-behavior: smooth;
+  gap: 30px;
+  scrollbar-color: #76b900 #e0e0e0;
+  scrollbar-width: thin;
+  /* Always show scrollbar for Webkit browsers */
+  -webkit-overflow-scrolling: auto;
+  scrollbar-gutter: stable both-edges;
+}
+
+/* For Webkit browsers */
+.carousel-slider::-webkit-scrollbar {
+  height: 8px;
+  background: #e0e0e0;
+}
+
+.carousel-slider::-webkit-scrollbar-thumb {
+  background: #76b900;
+  border-radius: 4px;
+}
+
+.carousel-slider::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+.blog-card {
+  width: 410px;
+  height: 485px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 230px;
+}
+
+.blog-card .info {
+  padding: 16px;
+}
+
+.blog-card .info .label {
+  margin: 30px 0;
+  font-size: 15px;
+  font-weight: 700;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+.blog-card .info .title {
+  font-size: 18px;
+  font-weight: 700;
+  height: 44px;
+  line-height: 22.5px;
+  margin: 30px 0;
+}
+.blog-card .info .description {
+  color: #1a1a1a;
+  font-size: 15px;
+  text-overflow: ellipsis;
+}
+
+.blogs-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.blogs-section h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Blog Section First Card */
+
+.blog-section-first-card {
+  display: flex;
+  flex-direction: column;
+  width: 520px;
+  font-size: 20px;
+  color: #1a1a1a;
+  gap: 24px;
+}
+
+.blog-section-first-card .description {
+  line-height: 1.75em;
+}
+
+.blog-section-first-card > .quick-links {
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  gap: 8px;
+  height: 20px;
+  align-items: center;
+  text-decoration: none;
+}
+
+.blog-section-first-card i {
+  color: #76b900;
+}
+
+.quick-links-list {
+  font-size: 16px;
+  height: 20px;
+  font-weight: 700;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.quick-links-list a {
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #000000;
+  color: #fff;
+  margin-top: 60px;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.link-column h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 32px;
+  font-family: Arial, sans-serif;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgb(116, 116, 116);
+}
+
+.link-column ul {
+  list-style: none;
+}
+
+.link-column li {
+  margin-bottom: 20px;
+}
+
+.link-column a {
+  color: #76b900;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  transition: color 0.2s ease;
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.footer-social span {
+  color: #888888;
+  font-size: 16px;
+  margin-right: 24px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-social a {
+  fill: #888888;
+  color: #888888;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-social a:hover {
+  color: #ffffff;
+}
+
+.footer > .viewport-limit {
+  padding: 60px 0;
+}
+
+/* Global Footer */
+.global-footer {
+  background-color: white;
+  width: 100%;
+  color: #000000;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.viewport-limit {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.footer-brand-logo {
+  width: 110px;
+  height: 50px;
+  background-image: url(./assets/nvdia-logo.svg);
+  background-size: contain;
+}
+
+.global-footer_links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.global-footer_links li span {
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.global-footer_links li span:hover {
+  color: #1a1a1a;
+}
+
+.global-footer_copyright {
+  color: #666666;
+  font-size: 14px;
+  font-family: monospace;
+}
