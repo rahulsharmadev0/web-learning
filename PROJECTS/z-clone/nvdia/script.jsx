@@ -1,3 +1,149 @@
+// Reusable hook for horizontal carousels with range control
+function useHorizontalScroll() {
+  const sliderRef = React.useRef(null);
+  const [rangeMax, setRangeMax] = React.useState(0);
+  const [value, setValue] = React.useState(0);
+
+  React.useEffect(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+
+    const measure = () => {
+      const max = Math.max(0, el.scrollWidth - el.clientWidth);
+      setRangeMax(max);
+      setValue((v) => Math.min(v, max));
+    };
+
+    const onScroll = () => {
+      setValue(el.scrollLeft);
+    };
+
+    measure();
+    const ro =
+      typeof ResizeObserver !== "undefined" ? new ResizeObserver(measure) : null;
+    if (ro) ro.observe(el);
+    window.addEventListener("resize", measure);
+    el.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      if (ro) ro.disconnect();
+      window.removeEventListener("resize", measure);
+      el.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  const onRangeInput = (e) => {
+    const x = Number(e.target.value);
+    setValue(x);
+    const el = sliderRef.current;
+    if (el) el.scrollTo({ left: x, behavior: "auto" });
+  };
+
+  const scrollByDelta = (dx) => {
+    const el = sliderRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dx, behavior: "smooth" });
+  };
+
+  const scrollByPage = (dir = 1) => {
+    const el = sliderRef.current;
+    if (!el) return;
+    const delta = Math.max(320, Math.floor(el.clientWidth * 0.9)) * dir;
+    scrollByDelta(delta);
+  };
+
+  return { sliderRef, rangeMax, value, onRangeInput, scrollByPage };
+}
+
+function RecommendationSection({ list }) {
+  const { sliderRef, rangeMax, value, onRangeInput, scrollByPage } =
+    useHorizontalScroll();
+
+  return (
+    <div className="recommendation-section">
+      <div className="viewport-limit rs-header">
+        <h2>Recommended For You</h2>
+        <div className="rs-actions">
+          <img className="icon" src="./assets/settings-icon.svg" alt="settings" />
+          <button
+            type="button"
+            className="icon-btn"
+            aria-label="Previous"
+            onClick={() => scrollByPage(-1)}
+          >
+            <i className="fa-solid fa-chevron-left"></i>
+          </button>
+          <button
+            type="button"
+            className="icon-btn"
+            aria-label="Next"
+            onClick={() => scrollByPage(1)}
+          >
+            <i className="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div ref={sliderRef} className="carousel-slider">
+        {list.map((item, idx) => (
+          <a className="rs-card" key={idx} href={item.url}>
+            <img src={item.imageUrl} alt={item.title} />
+            <div className="rs-card-content">
+              <p className="rs-pretitle">{item.pretitle}</p>
+              <p className="rs-title">{item.title}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div className="viewport-limit">
+        <div className="carousel-controls">
+          <input
+            className="range"
+            type="range"
+            min="0"
+            max={rangeMax}
+            value={Math.min(value, rangeMax)}
+            step="1"
+            onInput={onRangeInput}
+            onChange={onRangeInput}
+            aria-label="Recommended scroll"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HeaderBanner({ list }) {
+  const [currentCard, setCurrentCard] = React.useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCard((prev) => (prev + 1) % list.length);
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [list.length]);
+
+  const info = list[currentCard];
+  return (
+    <div className="header-banner" style={{backgroundColor: info.color}}>
+      <div className="viewport-limit">
+        <img className="hb-image" src={info.image} alt={info.title} />
+        <div className="hb-content">
+          {info.label && <p className="hb-label">{info.label}</p>}
+          <p className="hb-title">{info.title}</p>
+          {info.subtitle && <p className="hb-label">{info.subtitle}</p>}
+          <p className="hb-description">{info.description}</p>
+          <a className="btn" href="#">
+            {info.buttonText}
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function NavBar() {
   return (
     <nav className="nav-bar">
@@ -68,10 +214,11 @@ function BlogSectionFirstCard({ info }) {
 }
 
 function BlogsSection({ list }) {
+  const { sliderRef, rangeMax, value, onRangeInput } = useHorizontalScroll();
   return (
-    <div className="blogs-section viewport-limit">
-      <h2>{list[0].title}</h2>
-      <div className="carousel-slider">
+    <div className="blogs-section">
+      <h2 className="viewport-limit">{list[0].title}</h2>
+      <div ref={sliderRef} className="carousel-slider">
         {list.map((item, idx) =>
           idx == 0 ? (
             <BlogSectionFirstCard info={item} key={idx} />
@@ -79,6 +226,21 @@ function BlogsSection({ list }) {
             <BlogCard info={item} key={idx} />
           )
         )}
+      </div>
+      <div className="viewport-limit">
+        <div className="carousel-controls">
+          <input
+            className="range"
+            type="range"
+            min="0"
+            max={rangeMax}
+            value={Math.min(value, rangeMax)}
+            step="1"
+            onInput={onRangeInput}
+            onChange={onRangeInput}
+            aria-label="Carousel scroll"
+          />
+        </div>
       </div>
     </div>
   );
@@ -147,6 +309,8 @@ function App() {
   return (
     <div>
       <NavBar />
+      <HeaderBanner list={BannerData} />
+      <RecommendationSection list={RecommendationData} />
       <BlogsSection list={AiData} />
       <BlogsSection list={DesignSimulationData} />
       <BlogsSection list={HPCData} />
