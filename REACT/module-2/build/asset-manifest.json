@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/web-learning/REACT/module-2/build/static/css/main.9b7e766e.css",
+    "main.js": "/web-learning/REACT/module-2/build/static/js/main.1149510d.js",
+    "index.html": "/web-learning/REACT/module-2/build/index.html",
+    "main.9b7e766e.css.map": "/web-learning/REACT/module-2/build/static/css/main.9b7e766e.css.map",
+    "main.1149510d.js.map": "/web-learning/REACT/module-2/build/static/js/main.1149510d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9b7e766e.css",
+    "static/js/main.1149510d.js"
+  ]
+}

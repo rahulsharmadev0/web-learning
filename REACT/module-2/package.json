@@ -1,7 +1,7 @@
 {
   "name": "module-2",
   "version": "0.1.0",
-   "homepage": "https://rahulsharmadev0.github.io/web-learning/REACT/module-2",
+   "homepage": "https://rahulsharmadev0.github.io/web-learning/REACT/module-2/build",
   "private": true,
   "dependencies": {
     "react": "^19.1.1",

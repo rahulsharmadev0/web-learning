@@ -201,7 +201,7 @@
                     "id": "module-2",
                     "title": "React with Build Tools",
                     "description": "Advanced React development with Create React App and modern workflow",
-                    "path": "/REACT/module-2/",
+                    "path": "/REACT/module-2/build",
                     "type": "project",
                     "tech": [
                         "Create React App",
@@ -443,6 +443,38 @@
                     "status": "live",
                     "type": "project",
                     "path": "/PROJECTS/pig_game/"
+                },
+                {
+                    "id": "hulu",
+                    "title": "Hulu Clone",
+                    "description": "Streaming platform interface recreation with modern design patterns and interactive elements.",
+                    "categories": [
+                        "Website Clone"
+                    ],
+                    "tech": [
+                        "HTML5",
+                        "CSS3",
+                        "JavaScript"
+                    ],
+                    "status": "live",
+                    "type": "project",
+                    "path": "/PROJECTS/z-clone/hulu/"
+                },
+                {
+                    "id": "nvdia",
+                    "title": "Nvidia Clone",
+                    "description": "Product landing page recreation with hero sections, product highlights, and responsive design.",
+                    "categories": [
+                        "Website Clone"
+                    ],
+                    "tech": [
+                        "HTML5",
+                        "CSS3",
+                        "JavaScript"
+                    ],
+                    "status": "live",
+                    "type": "project",
+                    "path": "/PROJECTS/z-clone/nvdia/"
                 }
             ]
         }
