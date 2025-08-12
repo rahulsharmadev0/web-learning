@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Module 2 - Source Code</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .breadcrumb {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            margin: 0 10px;
+        }
+        
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+        
+        .files-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .file-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-left: 4px solid #61dafb;
+        }
+        
+        .file-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .file-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .file-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #61dafb, #21a9c7);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .folder-icon {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="../../../index.html">← Portfolio</a>
+            <span style="color: white;">|</span>
+            <a href="../../index.html">← React</a>
+            <span style="color: white;">|</span>
+            <a href="../nav.html">← Module 2</a>
+        </div>
+        
+        <header class="header">
+            <h1>📁 React Module 2 - Source Code</h1>
+            <p>Browse the source code structure and components</p>
+        </header>
+        
+        <div class="files-grid">
+            <div class="file-card">
+                <h3><span class="folder-icon">📄</span> App.jsx</h3>
+                <p>Main React application component with routing and core functionality</p>
+                <a href="App.jsx" class="btn">View Component →</a>
+            </div>
+            
+            <div class="file-card">
+                <h3><span class="folder-icon">🚀</span> index.js</h3>
+                <p>Application entry point with React DOM rendering and root configuration</p>
+                <a href="index.js" class="btn">View Entry →</a>
+            </div>
+            
+            <div class="file-card">
+                <h3><span class="folder-icon">📁</span> Components</h3>
+                <p>Reusable React components and UI elements directory</p>
+                <a href="components/" class="btn">Browse Components →</a>
+            </div>
+            
+            <div class="file-card">
+                <h3><span class="folder-icon">💾</span> Data</h3>
+                <p>Static data files, JSON configurations, and data management utilities</p>
+                <a href="data/" class="btn">Browse Data →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

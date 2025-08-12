@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-html-generator",
+  "version": "1.0.0",
+  "description": "Static HTML generator for web learning portfolio",
+  "main": "generator.js",
+  "scripts": {
+    "generate": "node generator.js",
+    "watch": "node generator.js --watch",
+    "clean": "node generator.js --clean",
+    "generate-portfolio": "npm run generate"
+  },
+  "keywords": ["html", "generator", "portfolio", "static"],
+  "author": "Rahul Sharma",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "fs-extra": "^11.1.1"
+  }
+}

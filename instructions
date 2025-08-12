@@ -1,0 +1,20 @@
+
+
+1. Deep analyse json structure in the 'portfolio-metadata.json' file.
+2. in json file 'icon' is class of font-awesome icon.
+3. Did you need to build a Generation index.html files each path of json file. (eg. /, /HTML, /CSS, /PROJECTS ..etc).
+4. Brief of index.html file:
+    - this display Projects, categories cards. on click on card it will redirect respective path.
+    eg. /  -> use click PROJECTS card will redirect to /PROJECTS/ screen, on Projects screen it will display all projects cards.
+
+5. Website have a nice header and static footer.
+6. Footer remain same for all pages.
+   - it beautifully render 'portfolio' information from 'portfolio-metadata.json' file. 
+7. 'generated' is responsible for creating index.HTML file all paths of json file.
+
+Feel Free to use if needed:
+ - font-awesome: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css
+ - cdn link of react, cdn link of react-dom, cdn link of react-router-dom ..etc.
+ - you external dependency for code generation. 
+
+

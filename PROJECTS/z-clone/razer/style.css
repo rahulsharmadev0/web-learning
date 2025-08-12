@@ -89,8 +89,7 @@ button:focus {
   color: #fff;
 }
 .notif p {
-  margin: 0;
-  padding: 12px 24px;
+  padding: 12px 0px;
   text-align: center;
   font-size: 14px;
   font-weight: 400;
@@ -98,7 +97,7 @@ button:focus {
 }
 .notif a {
   color: #fff;
-  text-decoration: underline;
+  text-decoration: underline; 
   font-weight: 500;
   transition: color 0.2s;
 }

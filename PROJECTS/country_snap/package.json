@@ -5,7 +5,7 @@
   "homepage": "https://rahulsharmadev0.github.io/web-learning/PROJECTS/country_snap",
   "scripts": {
     "start": "react-scripts start",
-    "build": "BUILD_PATH=out react-scripts build",
+    "build": "react-scripts build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
