@@ -348,14 +348,12 @@
                     "title": "Redux Documentation",
                     "description": "Redux official documentation site clone with modern design and developer-focused interface.",
                     "categories": [
-                        "Developer Tools",
+                        "Developer Tool",
                         "Website Clone"
                     ],
                     "tech": [
                         "HTML5",
-                        "CSS3",
-                        "Documentation",
-                        "Developer Tools"
+                        "CSS3"
                     ],
                     "status": "live",
                     "type": "project",
@@ -413,6 +411,38 @@
                     "status": "live",
                     "type": "project",
                     "path": "/PROJECTS/z-clone/tShop/"
+                },
+                {
+                    "id": "guess-my-number",
+                    "title": "Guess My Number",
+                    "description": "Classic number guessing game with scoring and high/low hints.",
+                    "categories": [
+                        "Game"
+                    ],
+                    "tech": [
+                        "HTML5",
+                        "CSS3",
+                        "JavaScript"
+                    ],
+                    "status": "live",
+                    "type": "project",
+                    "path": "/PROJECTS/guess_my_number/"
+                },
+                {
+                    "id": "pig-game",
+                    "title": "Pig Game",
+                    "description": "Two-player dice game with hold/roll mechanics and winning score.",
+                    "categories": [
+                        "Game"
+                    ],
+                    "tech": [
+                        "HTML5",
+                        "CSS3",
+                        "JavaScript"
+                    ],
+                    "status": "live",
+                    "type": "project",
+                    "path": "/PROJECTS/pig_game/"
                 }
             ]
         }

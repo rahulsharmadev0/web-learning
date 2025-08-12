@@ -49,13 +49,13 @@ class PortfolioGenerator {
 
     async generateIndex(modulePath = '/', moduleData = null) {
         const isRoot = modulePath === '/';
-        const outputPath = isRoot 
+        const outputPath = isRoot
             ? path.join(__dirname, CONFIG.outputDir, 'index.html')
             : path.join(__dirname, CONFIG.outputDir, modulePath.slice(1), 'index.html');
 
         // Determine what to display based on the path and type
-    let pageTitle, pageDescription, displayModules, displayProjects;
-        
+        let pageTitle, pageDescription, displayModules, displayProjects;
+
         if (isRoot) {
             // Root page - show all top-level modules as cards
             pageTitle = this.portfolioData.portfolio.title;
@@ -69,17 +69,17 @@ class PortfolioGenerator {
                 console.warn(`⚠️  Module not found for path: ${modulePath}`);
                 return;
             }
-            
+
             // Skip generation for project type nodes
             if (this.isProject(module)) {
                 console.log(`⏭️  Skipping index generation for project: ${module.title}`);
                 return;
             }
-            
+
             pageTitle = module.title;
             pageDescription = module.description;
             displayModules = [];
-            
+
             if (this.isProjectsCollection(module)) {
                 // Projects collection - show direct children as projects
                 displayProjects = module.children || [];
@@ -135,7 +135,7 @@ class PortfolioGenerator {
      * @returns {{count:number,label:string}}
      */
     countChildren(module) {
-    if (this.isProjectsCollection(module) && Array.isArray(module.children)) {
+        if (this.isProjectsCollection(module) && Array.isArray(module.children)) {
             return { count: module.children.length, label: 'projects' };
         }
         return { count: 0, label: 'items' };
@@ -181,7 +181,7 @@ class PortfolioGenerator {
         const breadcrumbs = this.generateBreadcrumbs(currentPath);
         const modulesGrid = modules.length > 0 ? this.generateModulesGrid(modules) : '';
         const projectsGrid = projects.length > 0 ? this.generateProjectsGrid(projects, currentPath) : '';
-        
+
         return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -225,10 +225,10 @@ class PortfolioGenerator {
 
     generateBreadcrumbs(currentPath) {
         if (currentPath === '/') return '';
-        
+
         const pathParts = currentPath.split('/').filter(Boolean);
         let breadcrumbPath = '';
-        
+
         const breadcrumbs = [
             '<nav class="breadcrumb">',
             '<a href="../index.html" class="breadcrumb-item">🏠 Home</a>'
@@ -238,7 +238,7 @@ class PortfolioGenerator {
             breadcrumbPath += `/${part}`;
             const module = this.portfolioData.modules.find(m => m.path === `${breadcrumbPath}/`);
             const title = module ? module.title : part.toUpperCase();
-            
+
             if (index === pathParts.length - 1) {
                 breadcrumbs.push(`<span class="breadcrumb-item current">${title}</span>`);
             } else {
@@ -266,13 +266,10 @@ class PortfolioGenerator {
                             ${childrenCount > 0 ? `<span class="card-count">${childrenCount} ${childrenLabel}</span>` : ''}
                         </div>
                     </div>
-                    <div class="card-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
                 </div>`;
         }).join('\n            ');
 
-        const sectionTitle = modules.length > 0 && modules[0].type === 'projects-collection' ? 
+        const sectionTitle = modules.length > 0 && modules[0].type === 'projects-collection' ?
             '📂 Project Collections' : '🚀 Learning Modules';
 
         return `
@@ -285,10 +282,12 @@ class PortfolioGenerator {
     }
 
     generateProjectsGrid(projects, currentPath) {
+        const hasCategories = projects.some(p => p.category || (Array.isArray(p.categories) && p.categories.length));
+
         const cards = projects.map(project => {
             const projectPath = this.resolveProjectPath(project, currentPath);
             const techTags = this.renderTechTags(project.tech);
-            const statusBadge = project.status === 'live' ? 
+            const statusBadge = project.status === 'live' ?
                 '<span class="status-badge live">🟢 Live</span>' : '';
             // Support either single category or categories array
             let categoryBadge = '';
@@ -296,25 +295,27 @@ class PortfolioGenerator {
                 categoryBadge = `<span class="category-badge">${project.category}</span>`;
             } else if (Array.isArray(project.categories) && project.categories.length) {
                 categoryBadge = project.categories
-                    .map(c => `<span class="category-badge">${c}</span>`) 
+                    .map(c => `<span class="category-badge">${c}</span>`)
                     .join('');
             }
+            const dataCategories = project.category
+                ? project.category
+                : (Array.isArray(project.categories) ? project.categories.join(',') : '');
 
             return `
-                <div class="card project-card" data-path="${projectPath}" onclick="location.href='${projectPath}'" style="cursor: pointer;">
+                <div class="card project-card" data-path="${projectPath}" data-categories="${dataCategories}" onclick="location.href='${projectPath}'" style="cursor: pointer;">
                     <div class="card-content">
                         <div class="card-header">
                             <h3 class="card-title">${project.title}</h3>
-                            <div class="card-badges">
-                                ${statusBadge}
-                                ${categoryBadge}
+                            ${statusBadge}
                             </div>
+                        <div class="card-badges">
+                                ${categoryBadge}
                         </div>
                         <p class="card-description">${project.description}</p>
-                        ${techTags ? `<div class="tech-tags">${techTags}</div>` : ''}
-                    </div>
-                    <div class="card-arrow">
+                        ${techTags ? `<div class="tech-tags">${techTags}</div>` : `<div class="card-arrow">
                         <i class="fas fa-external-link-alt"></i>
+                    </div>`}
                     </div>
                 </div>`;
         }).join('\n            ');
@@ -323,6 +324,10 @@ class PortfolioGenerator {
 
         return `
             <section class="section">
+                ${hasCategories ? `
+                <div class="filters-bar" id="category-filters" aria-label="Filter by categories">
+                    <!-- Chips and Clear All button injected by script.js -->
+                </div>` : ''}
                 <h2 class="section-title">${sectionTitle}</h2>
                 <div class="grid projects-grid">
                     ${cards}
@@ -375,50 +380,50 @@ class PortfolioGenerator {
 
     async generateAll() {
         console.log('🚀 Starting portfolio generation...');
-        
+
         // Copy assets
         await this.copyAssets();
-        
+
         // Generate root index
         await this.generateIndex('/');
-        
+
         // Generate module-specific indexes only for non-project types
         for (const module of this.portfolioData.modules) {
             if (module.type !== 'project') {
                 await this.generateIndex(module.path, module);
             }
         }
-        
+
         console.log('✅ All files generated successfully!');
     }
 
     async copyAssets() {
         const assetsDir = path.join(__dirname, 'assets');
         const outputDir = path.join(__dirname, CONFIG.outputDir);
-        
+
         // Ensure assets directory exists
         await fs.ensureDir(assetsDir);
-        
+
         // Copy style.css if it exists, otherwise create default
         const stylePath = path.join(assetsDir, 'style.css');
         const outputStylePath = path.join(outputDir, 'style.css');
-        
+
         if (await fs.pathExists(stylePath)) {
             await fs.copy(stylePath, outputStylePath);
         } else {
             await fs.writeFile(outputStylePath, this.getDefaultCSS());
         }
-        
+
         // Copy script.js if it exists, otherwise create default
         const scriptPath = path.join(assetsDir, 'script.js');
         const outputScriptPath = path.join(outputDir, 'script.js');
-        
+
         if (await fs.pathExists(scriptPath)) {
             await fs.copy(scriptPath, outputScriptPath);
         } else {
             await fs.writeFile(outputScriptPath, this.getDefaultJS());
         }
-        
+
         console.log('✅ Assets copied/created successfully');
     }
 
@@ -428,37 +433,37 @@ class PortfolioGenerator {
             path.join(__dirname, CONFIG.outputDir, 'style.css'),
             path.join(__dirname, CONFIG.outputDir, 'script.js')
         ];
-        
+
         // Clean module index files
         for (const module of this.portfolioData.modules) {
             patterns.push(path.join(__dirname, CONFIG.outputDir, module.path.slice(1), 'index.html'));
         }
-        
+
         for (const pattern of patterns) {
             if (await fs.pathExists(pattern)) {
                 await fs.remove(pattern);
                 console.log(`🗑️  Removed: ${pattern}`);
             }
         }
-        
+
         console.log('✅ Cleanup completed');
     }
 
     async watch() {
         console.log('👀 Watching for changes...');
-        
+
         const watcher = chokidar.watch([
             path.join(__dirname, CONFIG.sourceFile),
             path.join(__dirname, 'templates/**/*'),
             path.join(__dirname, 'assets/**/*')
         ]);
-        
+
         watcher.on('change', async (filePath) => {
             console.log(`📝 File changed: ${filePath}`);
             await this.loadPortfolioData();
             await this.generateAll();
         });
-        
+
         // Generate initial files
         await this.generateAll();
     }
@@ -628,7 +633,6 @@ margin: 12px 0;
 .card-title {
     font-size: 1.25rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
     color: var(--text-primary);
 }
 
@@ -651,6 +655,8 @@ margin: 12px 0;
 }
 
 .card-arrow {
+    display: flex;
+    justify-content: flex-end;
     color: var(--primary-color);
     font-size: 1.25rem;
     opacity: 0.7;
@@ -659,6 +665,7 @@ margin: 12px 0;
 
 .card:hover .card-arrow {
     opacity: 1;
+     color: var(--primary-color);
 }
 
 /* Project Cards */
@@ -670,7 +677,6 @@ margin: 12px 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 0.5rem;
 }
 
 .card-badges {
@@ -903,7 +909,7 @@ document.addEventListener('DOMContentLoaded', function() {
 async function main() {
     const args = process.argv.slice(2);
     const generator = new PortfolioGenerator();
-    
+
     try {
         if (args.includes('--watch')) {
             await generator.watch();
