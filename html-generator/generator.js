@@ -3,17 +3,29 @@ const path = require('path');
 const chokidar = require('chokidar');
 
 // Configuration
-const CONFIG = {
+/**
+ * @typedef {Object} Config
+ * @property {string} sourceFile - Relative path to the portfolio JSON file
+ * @property {string} outputDir - Relative path to the output directory for generated site
+ * @property {string} templateDir - Reserved for future templates (unused today)
+ * @property {string} stylesFile - Path to the CSS asset (used when copying)
+ * @property {string} scriptsFile - Path to the JS asset (used when copying)
+ */
+
+/** @type {Config} */
+const CONFIG = Object.freeze({
     sourceFile: '../portfolio-metadata.json',
     outputDir: '../',
     templateDir: './templates',
     stylesFile: './assets/style.css',
     scriptsFile: './assets/script.js'
-};
+});
 
 class PortfolioGenerator {
     constructor() {
         this.portfolioData = null;
+        /** @type {Record<string, any>} */
+        this.modulesByPath = {};
         this.loadPortfolioData();
     }
 
@@ -21,6 +33,13 @@ class PortfolioGenerator {
         try {
             const data = await fs.readJson(path.join(__dirname, CONFIG.sourceFile));
             this.portfolioData = data;
+            // Build quick-lookup map for modules by their path to speed up lookups
+            this.modulesByPath = Array.isArray(this.portfolioData?.modules)
+                ? this.portfolioData.modules.reduce((acc, m) => {
+                    if (m && typeof m.path === 'string') acc[m.path] = m;
+                    return acc;
+                }, {})
+                : {};
             console.log('✅ Portfolio data loaded successfully');
         } catch (error) {
             console.error('❌ Error loading portfolio data:', error.message);
@@ -35,7 +54,7 @@ class PortfolioGenerator {
             : path.join(__dirname, CONFIG.outputDir, modulePath.slice(1), 'index.html');
 
         // Determine what to display based on the path and type
-        let pageTitle, pageDescription, displayModules, displayProjects;
+    let pageTitle, pageDescription, displayModules, displayProjects;
         
         if (isRoot) {
             // Root page - show all top-level modules as cards
@@ -45,14 +64,14 @@ class PortfolioGenerator {
             displayProjects = [];
         } else {
             // Module-specific page
-            const module = this.portfolioData.modules.find(m => m.path === modulePath);
+            const module = this.getModuleByPath(modulePath);
             if (!module) {
                 console.warn(`⚠️  Module not found for path: ${modulePath}`);
                 return;
             }
             
             // Skip generation for project type nodes
-            if (module.type === 'project') {
+            if (this.isProject(module)) {
                 console.log(`⏭️  Skipping index generation for project: ${module.title}`);
                 return;
             }
@@ -61,11 +80,7 @@ class PortfolioGenerator {
             pageDescription = module.description;
             displayModules = [];
             
-            if (module.type === 'categories') {
-                // Categories page - show project collections as modules, and all projects
-                displayModules = module.children || [];
-                displayProjects = this.flattenProjectsFromCategories(module.children || []);
-            } else if (module.type === 'projects-collection') {
+            if (this.isProjectsCollection(module)) {
                 // Projects collection - show direct children as projects
                 displayProjects = module.children || [];
             } else {
@@ -87,14 +102,78 @@ class PortfolioGenerator {
         console.log(`✅ Generated: ${outputPath}`);
     }
 
-    // Helper method to flatten projects from categories
-    flattenProjectsFromCategories(categories) {
-        return categories.flatMap(category => 
-            (category.children || []).map(project => ({
-                ...project,
-                category: category.title
-            }))
-        );
+    // ----------------------
+    // Helper utilities (no output changes)
+    // ----------------------
+    /** @param {any} node */
+    isProject(node) { return node?.type === 'project'; }
+    /** @param {any} node */
+    isProjectsCollection(node) { return node?.type === 'projects-collection'; }
+
+    /**
+     * Fast module lookup by exact path (falls back to array scan if needed).
+     * @param {string} modulePath
+     */
+    getModuleByPath(modulePath) {
+        return this.modulesByPath[modulePath]
+            || this.portfolioData.modules.find(m => m.path === modulePath);
+    }
+
+    /**
+     * Compute icon HTML or emoji as used originally.
+     * @param {any} module
+     */
+    getIconHTML(module) {
+        return module.icon
+            ? (module.icon.startsWith('fa-') ? `<i class="${module.icon}"></i>` : module.icon)
+            : '📁';
+    }
+
+    /**
+     * Count children consistently and return display label.
+     * @param {any} module
+     * @returns {{count:number,label:string}}
+     */
+    countChildren(module) {
+    if (this.isProjectsCollection(module) && Array.isArray(module.children)) {
+            return { count: module.children.length, label: 'projects' };
+        }
+        return { count: 0, label: 'items' };
+    }
+
+    /**
+     * Build module href as used in original generator (relative index.html path).
+     * @param {any} module
+     */
+    getModuleHref(module) {
+        return module.path
+            ? (module.path.slice(1).replace(/\/$/, '') + '/index.html')
+            : '#';
+    }
+
+    /**
+     * Resolve project link relative to currentPath, matching original behavior.
+     * @param {any} project
+     * @param {string} currentPath
+     */
+    resolveProjectPath(project, currentPath) {
+        let projectPath = project.path || project.file || '';
+        if (project.file && !project.path) {
+            projectPath = project.file;
+        } else if (project.path && project.path.startsWith('/')) {
+            projectPath = project.path.replace(currentPath, '').replace(/^\//, '');
+        }
+        return projectPath;
+    }
+
+    /**
+     * Render tech tags exactly as before (no spaces between spans).
+     * @param {string[]} tech
+     */
+    renderTechTags(tech) {
+        return Array.isArray(tech)
+            ? tech.map(t => `<span class="tech-tag">${t}</span>`).join('')
+            : '';
     }
 
     generateHTML({ pageTitle, pageDescription, currentPath, modules, projects, isRoot }) {
@@ -173,28 +252,11 @@ class PortfolioGenerator {
 
     generateModulesGrid(modules) {
         const cards = modules.map(module => {
-            const iconDisplay = module.icon ? 
-                (module.icon.startsWith('fa-') ? `<i class="${module.icon}"></i>` : module.icon) :
-                '📁'; // Default icon for collections without specific icon
-                
-            // Count children based on type
-            let childrenCount = 0;
-            let childrenLabel = 'items';
-            
-            if (module.type === 'projects-collection' && module.children) {
-                childrenCount = module.children.length;
-                childrenLabel = 'projects';
-            } else if (module.type === 'categories' && module.children) {
-                childrenCount = module.children.flatMap(cat => cat.children || []).length;
-                childrenLabel = 'projects';
-            }
-            
-            const moduleHref = module.path ? 
-                (module.path.slice(1).replace(/\/$/, '') + '/index.html') :
-                '#';
-                
+            const iconDisplay = this.getIconHTML(module);
+            const { count: childrenCount, label: childrenLabel } = this.countChildren(module);
+            const moduleHref = this.getModuleHref(module);
             return `
-                <div class="card module-card" onclick="location.href='${moduleHref}'">
+                <div class="card module-card" data-path="${moduleHref}" onclick="location.href='${moduleHref}'" style="cursor: pointer;">
                     <div class="card-icon">${iconDisplay}</div>
                     <div class="card-content">
                         <h3 class="card-title">${module.title}</h3>
@@ -224,28 +286,22 @@ class PortfolioGenerator {
 
     generateProjectsGrid(projects, currentPath) {
         const cards = projects.map(project => {
-            let projectPath = project.path || project.file || '';
-            
-            // Handle different project path formats
-            if (project.file && !project.path) {
-                // For learning modules with individual files
-                projectPath = project.file;
-            } else if (project.path && project.path.startsWith('/')) {
-                // For absolute paths, make them relative
-                projectPath = project.path.replace(currentPath, '').replace(/^\//, '');
-            }
-
-            const techTags = project.tech ? 
-                project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('') : '';
-            
+            const projectPath = this.resolveProjectPath(project, currentPath);
+            const techTags = this.renderTechTags(project.tech);
             const statusBadge = project.status === 'live' ? 
                 '<span class="status-badge live">🟢 Live</span>' : '';
-            
-            const categoryBadge = project.category ? 
-                `<span class="category-badge">${project.category}</span>` : '';
+            // Support either single category or categories array
+            let categoryBadge = '';
+            if (project.category) {
+                categoryBadge = `<span class="category-badge">${project.category}</span>`;
+            } else if (Array.isArray(project.categories) && project.categories.length) {
+                categoryBadge = project.categories
+                    .map(c => `<span class="category-badge">${c}</span>`) 
+                    .join('');
+            }
 
             return `
-                <div class="card project-card" onclick="location.href='${projectPath}'">
+                <div class="card project-card" data-path="${projectPath}" onclick="location.href='${projectPath}'" style="cursor: pointer;">
                     <div class="card-content">
                         <div class="card-header">
                             <h3 class="card-title">${project.title}</h3>

@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/web-learning/PROJECTS/country_snap/build/static/css/main.f7943ac7.css",
+    "main.js": "/web-learning/PROJECTS/country_snap/build/static/js/main.f60d6c5c.js",
+    "static/media/down.svg": "/web-learning/PROJECTS/country_snap/build/static/media/down.20dcb396cd7b0a480e1b804132f170c0.svg",
+    "static/media/up.svg": "/web-learning/PROJECTS/country_snap/build/static/media/up.e5efa99393d6c37f28598011af74f016.svg",
+    "index.html": "/web-learning/PROJECTS/country_snap/build/index.html",
+    "static/media/search.svg": "/web-learning/PROJECTS/country_snap/build/static/media/search.b96cef8b64d12ae2de74.svg",
+    "main.f7943ac7.css.map": "/web-learning/PROJECTS/country_snap/build/static/css/main.f7943ac7.css.map",
+    "main.f60d6c5c.js.map": "/web-learning/PROJECTS/country_snap/build/static/js/main.f60d6c5c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f7943ac7.css",
+    "static/js/main.f60d6c5c.js"
+  ]
+}

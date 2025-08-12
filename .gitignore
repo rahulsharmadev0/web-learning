@@ -7,9 +7,9 @@ node_modules/
 
 # testing
 /coverage
+.instructions
 
 # production
-/build
 /dist
 
 # misc

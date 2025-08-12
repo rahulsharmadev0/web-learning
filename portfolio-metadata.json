@@ -218,175 +218,201 @@
             "description": "Explore fully functional web applications including country information app, style portal, website clones, and productivity tools.",
             "icon": "🚀",
             "path": "/PROJECTS/",
-            "type": "categories",
+            "type": "projects-collection",
             "children": [
                 {
-                    "id": "productivity",
-                    "title": "Productivity Apps",
-                    "type": "projects-collection",
-                    "children": [
-                        {
-                            "id": "country_snap",
-                            "title": "CountrySnap",
-                            "description": "Interactive React application for exploring country information with modern UI components and data visualization.",
-                            "tech": [
-                                "React 19",
-                                "Create React App",
-                                "Modern CSS",
-                                "REST API"
-                            ],
-                            "status": "live",
-                            "type": "project",
-                            "path": "/PROJECTS/country_snap/build"
-                        },
-                        {
-                            "id": "daily-goal",
-                            "title": "Daily Goal Tracker",
-                            "description": "Simple and effective goal tracking application to help you stay productive and organized.",
-                            "tech": [
-                                "HTML5",
-                                "CSS3",
-                                "JavaScript",
-                                "Local Storage"
-                            ],
-                            "status": "live",
-                            "type": "project",
-                            "path": "/PROJECTS/daily-goal/"
-                        },
-                        {
-                            "id": "style-portal",
-                            "title": "Style Portal",
-                            "description": "Design tool for creating and exploring color gradients and patterns. Perfect for designers and developers.",
-                            "tech": [
-                                "HTML5",
-                                "CSS3",
-                                "JavaScript",
-                                "Design System"
-                            ],
-                            "status": "live",
-                            "type": "project",
-                            "path": "/PROJECTS/style-portal/"
-                        }
-                    ]
+                    "id": "country_snap",
+                    "title": "CountrySnap",
+                    "description": "Interactive React application for exploring country information with modern UI components and data visualization.",
+                    "categories": [
+                        "Data Visualization"
+                    ],
+                    "tech": [
+                        "React 19",
+                        "Create React App",
+                        "Modern CSS",
+                        "REST API"
+                    ],
+                    "status": "live",
+                    "type": "project",
+                    "path": "/PROJECTS/country_snap/build"
                 },
                 {
-                    "id": "website-clones",
-                    "title": "Website Clones",
-                    "type": "projects-collection",
-                    "children": [
-                        {
-                            "id": "amazon",
-                            "title": "Amazon Clone",
-                            "description": "Pixel-perfect recreation of Amazon's e-commerce interface with responsive design and interactive features.",
-                            "tech": [
-                                "HTML5",
-                                "CSS3",
-                                "JavaScript",
-                                "Responsive"
-                            ],
-                            "status": "live",
-                            "type": "project",
-                            "path": "/PROJECTS/z-clone/amazon/"
-                        },
-                        {
-                            "id": "netflix",
-                            "title": "Netflix Clone",
-                            "description": "Streaming platform interface recreation with modern design patterns and interactive elements.",
-                            "tech": [
-                                "HTML5",
-                                "CSS3",
-                                "JavaScript",
-                                "Media Queries"
-                            ],
-                            "status": "live",
-                            "type": "project",
-                            "path": "/PROJECTS/z-clone/netflix/"
-                        },
-                        {
-                            "id": "youtube",
-                            "title": "YouTube Clone",
-                            "description": "Video platform interface with dynamic content loading and responsive video grid layout.",
-                            "tech": [
-                                "HTML5",
-                                "CSS3",
-                                "JavaScript",
-                                "Grid Layout"
-                            ],
-                            "status": "live",
-                            "type": "project",
-                            "path": "/PROJECTS/z-clone/youtube/"
-                        },
-                        {
-                            "id": "microsoft",
-                            "title": "Microsoft Clone",
-                            "description": "Corporate website recreation with professional design and modern layout techniques.",
-                            "tech": [
-                                "HTML5",
-                                "CSS3",
-                                "Flexbox",
-                                "Corporate Design"
-                            ],
-                            "status": "live",
-                            "type": "project",
-                            "path": "/PROJECTS/z-clone/microsoft/"
-                        },
-                        {
-                            "id": "redux-dev",
-                            "title": "Redux Documentation",
-                            "description": "Redux official documentation site clone with modern design and developer-focused interface.",
-                            "tech": [
-                                "HTML5",
-                                "CSS3",
-                                "Documentation",
-                                "Developer Tools"
-                            ],
-                            "status": "live",
-                            "type": "project",
-                            "path": "/PROJECTS/z-clone/redux_dev/"
-                        },
-                        {
-                            "id": "razer",
-                            "title": "Razer Gaming",
-                            "description": "Razer website recreation using React components with modern gaming-focused design elements.",
-                            "tech": [
-                                "React",
-                                "JSX",
-                                "Modern CSS",
-                                "Gaming UI"
-                            ],
-                            "status": "live",
-                            "type": "project",
-                            "path": "/PROJECTS/z-clone/razer/"
-                        },
-                        {
-                            "id": "hackathon",
-                            "title": "Hackathon Platform",
-                            "description": "Complete hackathon event website with multiple pages, registration system, and participant resources.",
-                            "tech": [
-                                "HTML5",
-                                "CSS3",
-                                "JavaScript",
-                                "Multi-page"
-                            ],
-                            "status": "live",
-                            "type": "project",
-                            "path": "/PROJECTS/z-clone/hackathon/"
-                        },
-                        {
-                            "id": "tshop",
-                            "title": "Bewakoof T-Shop",
-                            "description": "E-commerce fashion website clone with product categories and modern shopping interface.",
-                            "tech": [
-                                "HTML5",
-                                "CSS3",
-                                "E-commerce",
-                                "Fashion UI"
-                            ],
-                            "status": "live",
-                            "type": "project",
-                            "path": "/PROJECTS/z-clone/tShop/"
-                        }
-                    ]
+                    "id": "daily-goal",
+                    "title": "Daily Goal Tracker",
+                    "description": "Simple and effective goal tracking application to help you stay productive and organized.",
+                    "categories": [
+                        "Productivity",
+                        "Task Management"
+                    ],
+                    "tech": [
+                        "HTML5",
+                        "CSS3",
+                        "JavaScript",
+                        "Local Storage"
+                    ],
+                    "status": "live",
+                    "type": "project",
+                    "path": "/PROJECTS/daily-goal/"
+                },
+                {
+                    "id": "style-portal",
+                    "title": "Style Portal",
+                    "description": "Design tool for creating and exploring color gradients and patterns. Perfect for designers and developers.",
+                    "categories": [
+                        "Design Tool",
+                        "Developer Tool"
+                    ],
+                    "tech": [
+                        "HTML5",
+                        "CSS3",
+                        "JavaScript",
+                        "Design System"
+                    ],
+                    "status": "live",
+                    "type": "project",
+                    "path": "/PROJECTS/style-portal/"
+                },
+                {
+                    "id": "amazon",
+                    "title": "Amazon Clone",
+                    "description": "Pixel-perfect recreation of Amazon's e-commerce interface with responsive design and interactive features.",
+                    "categories": [
+                        "E-commerce",
+                        "Website Clone"
+                    ],
+                    "tech": [
+                        "HTML5",
+                        "CSS3",
+                        "JavaScript",
+                        "Responsive"
+                    ],
+                    "status": "live",
+                    "type": "project",
+                    "path": "/PROJECTS/z-clone/amazon/"
+                },
+                {
+                    "id": "netflix",
+                    "title": "Netflix Clone",
+                    "description": "Streaming platform interface recreation with modern design patterns and interactive elements.",
+                    "categories": [
+                        "Website Clone"
+                    ],
+                    "tech": [
+                        "HTML5",
+                        "CSS3",
+                        "JavaScript",
+                        "Media Queries"
+                    ],
+                    "status": "live",
+                    "type": "project",
+                    "path": "/PROJECTS/z-clone/netflix/"
+                },
+                {
+                    "id": "youtube",
+                    "title": "YouTube Clone",
+                    "description": "Video platform interface with dynamic content loading and responsive video grid layout.",
+                    "categories": [
+                        "Website Clone"
+                    ],
+                    "tech": [
+                        "HTML5",
+                        "CSS3",
+                        "JavaScript",
+                        "Grid Layout"
+                    ],
+                    "status": "live",
+                    "type": "project",
+                    "path": "/PROJECTS/z-clone/youtube/"
+                },
+                {
+                    "id": "microsoft",
+                    "title": "Microsoft Clone",
+                    "description": "Corporate website recreation with professional design and modern layout techniques.",
+                    "categories": [
+                        "Corporate Website",
+                        "Website Clone"
+                    ],
+                    "tech": [
+                        "HTML5",
+                        "CSS3",
+                        "Flexbox",
+                        "Corporate Design"
+                    ],
+                    "status": "live",
+                    "type": "project",
+                    "path": "/PROJECTS/z-clone/microsoft/"
+                },
+                {
+                    "id": "redux-dev",
+                    "title": "Redux Documentation",
+                    "description": "Redux official documentation site clone with modern design and developer-focused interface.",
+                    "categories": [
+                        "Developer Tools",
+                        "Website Clone"
+                    ],
+                    "tech": [
+                        "HTML5",
+                        "CSS3",
+                        "Documentation",
+                        "Developer Tools"
+                    ],
+                    "status": "live",
+                    "type": "project",
+                    "path": "/PROJECTS/z-clone/redux_dev/"
+                },
+                {
+                    "id": "razer",
+                    "title": "Razer Gaming",
+                    "description": "Razer website recreation using React components with modern gaming-focused design elements.",
+                    "categories": [
+                        "Website Clone"
+                    ],
+                    "tech": [
+                        "React",
+                        "JSX",
+                        "Modern CSS",
+                        "Gaming UI"
+                    ],
+                    "status": "live",
+                    "type": "project",
+                    "path": "/PROJECTS/z-clone/razer/"
+                },
+                {
+                    "id": "hackathon",
+                    "title": "Hackathon Platform",
+                    "description": "Complete hackathon event website with multiple pages, registration system, and participant resources.",
+                    "categories": [
+                        "Event Platform",
+                        "Website Clone"
+                    ],
+                    "tech": [
+                        "HTML5",
+                        "CSS3",
+                        "JavaScript",
+                        "Multi-page"
+                    ],
+                    "status": "live",
+                    "type": "project",
+                    "path": "/PROJECTS/z-clone/hackathon/"
+                },
+                {
+                    "id": "tshop",
+                    "title": "Bewakoof T-Shop",
+                    "description": "E-commerce fashion website clone with product categories and modern shopping interface.",
+                    "categories": [
+                        "E-commerce",
+                        "Website Clone"
+                    ],
+                    "tech": [
+                        "HTML5",
+                        "CSS3",
+                        "E-commerce",
+                        "Fashion UI"
+                    ],
+                    "status": "live",
+                    "type": "project",
+                    "path": "/PROJECTS/z-clone/tShop/"
                 }
             ]
         }

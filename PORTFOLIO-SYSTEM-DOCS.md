@@ -22,33 +22,26 @@ Contains the main portfolio information:
 ```
 
 ### 2. **Modules Array Structure**
-Each module represents a learning section with specific structure:
+Each module has a type that determines behavior:
 
-#### Learning Modules (HTML, CSS, React)
-```json
-{
-  "id": "html",                    // Unique identifier
-  "title": "HTML Fundamentals",   // Display title
-  "description": "Master the...", // Description for cards
-  "icon": "📝",                   // Font Awesome class or emoji
-  "path": "/HTML/",               // Navigation path
-  "type": "learning-module",      // Module type
-  "projects": [...]               // Array of learning examples
-}
-```
-
-#### Project Collections
+#### Project Collections (non-leaf nodes)
 ```json
 {
   "id": "projects",
   "type": "projects-collection",
-  "categories": [
-    {
-      "id": "productivity",
-      "title": "Productivity Apps",
-      "projects": [...]           // Real project implementations
-    }
+  "children": [
+    { "type": "project", ... }   // Child projects
   ]
+}
+```
+
+#### Project (leaf node)
+```json
+{
+  "id": "module-1",
+  "title": "...",
+  "type": "project",
+  "path": "/REACT/module-1/" // or file for relative HTML
 }
 ```
 
@@ -82,16 +75,11 @@ The system creates index.html files for each path:
   - Complete footer with social links
 
 ### 2. **Module Pages** 
-- **Learning Modules** (`/HTML/`, `/CSS/`, `/REACT/`):
-  - Display individual projects/examples
-  - File-based navigation (p1.html, p2.html, etc.)
-  - Breadcrumb navigation
-  
-- **Project Collection** (`/PROJECTS/`):
-  - Shows all projects from all categories
+- **Project Collections** (`/HTML/`, `/CSS/`, `/REACT/`, `/PROJECTS/`):
+  - Shows all child projects
   - Live status badges
   - Technology tags
-  - Category organization
+  - Optional category labels from project.categories
 
 ## 🎯 Navigation Flow
 
@@ -182,6 +170,11 @@ npm run clean
 - `portfolio-metadata.json` - Single source of truth
 - Font Awesome 7.0 - Icon system
 - Responsive CSS Grid - Layout system
+
+## 🧭 Generation Rules
+
+1. No index.html is generated for nodes with type `project` (leaf nodes).
+2. index.html is mandatory for nodes with type `projects-collection` and the root.
 
 ## 🎨 Customization Options
 

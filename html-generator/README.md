@@ -8,7 +8,7 @@ This generator automatically creates index.html files for each path defined in t
 
 - **Root page (/)**: Displays all learning modules as cards
 - **Module pages** (e.g., /HTML/, /CSS/, /REACT/): Shows projects and examples for each module
-- **Projects page (/PROJECTS/)**: Displays all projects organized by categories
+- **Projects page (/PROJECTS/)**: Displays all projects from the collection
 
 ## 🚀 Features
 
@@ -93,7 +93,7 @@ The `portfolio-metadata.json` file structure:
 \`\`\`
 
 ### Modules Array
-Each module represents a learning section or project collection:
+Each module is either a project or a projects-collection:
 
 \`\`\`json
 {
@@ -102,38 +102,34 @@ Each module represents a learning section or project collection:
   "description": "Master the building blocks of web development...",
   "icon": "📝",  // Emoji or Font Awesome class
   "path": "/HTML/",
-  "type": "learning-module",
-  "projects": [
+  "type": "projects-collection",
+  "children": [
     {
       "file": "p1.html",
       "title": "Getting Started",
-      "description": "Basic HTML structure and fundamental concepts"
+      "description": "Basic HTML structure and fundamental concepts",
+      "type": "project"
     }
   ]
 }
 \`\`\`
 
 ### Project Collections
-For project-based modules:
+For project collections:
 
 \`\`\`json
 {
   "id": "projects",
   "type": "projects-collection",
-  "categories": [
+  "children": [
     {
-      "id": "productivity",
-      "title": "Productivity Apps",
-      "projects": [
-        {
-          "id": "country_snap",
-          "title": "CountrySnap",
-          "description": "Interactive React application...",
-          "tech": ["React 19", "Create React App"],
-          "status": "live",
-          "path": "/PROJECTS/country_snap/build"
-        }
-      ]
+      "id": "country_snap",
+      "title": "CountrySnap",
+      "description": "Interactive React application...",
+      "tech": ["React 19", "Create React App"],
+      "status": "live",
+      "type": "project",
+      "path": "/PROJECTS/country_snap/build"
     }
   ]
 }
@@ -173,8 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
 - Complete portfolio information
 
 ### Module Pages
-- **Learning Modules**: Show individual examples/projects
-- **Project Collections**: Show all projects with categories
+- **Project Collections**: Show all child projects
 - Breadcrumb navigation back to home
 - Technology tags and status badges
 
@@ -187,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
 - **Hover Effects**: Smooth animations and elevation
 - **Status Badges**: Live/Development indicators
 - **Tech Tags**: Technology stack display
-- **Category Labels**: Project categorization
+- **Category Labels**: Project categorization (from optional project.categories array)
 - **Click Actions**: Navigation to target pages
 
 ## 🔧 Technical Details
