@@ -2,7 +2,7 @@
   "name": "country_snap",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://rahulsharmadev0.github.io/web-learning/PROJECTS/country_snap",
+  "homepage": "https://rahulsharmadev0.github.io/web-learning/PROJECTS/country_snap/build",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

@@ -34,14 +34,14 @@ class PortfolioGenerator {
             ? path.join(__dirname, CONFIG.outputDir, 'index.html')
             : path.join(__dirname, CONFIG.outputDir, modulePath.slice(1), 'index.html');
 
-        // Determine what to display based on the path
+        // Determine what to display based on the path and type
         let pageTitle, pageDescription, displayModules, displayProjects;
         
         if (isRoot) {
-            // Root page - show all modules as cards
+            // Root page - show all top-level modules as cards
             pageTitle = this.portfolioData.portfolio.title;
             pageDescription = this.portfolioData.portfolio.description;
-            displayModules = this.portfolioData.modules;
+            displayModules = this.portfolioData.modules.filter(module => module.type !== 'project');
             displayProjects = [];
         } else {
             // Module-specific page
@@ -51,21 +51,23 @@ class PortfolioGenerator {
                 return;
             }
             
+            // Skip generation for project type nodes
+            if (module.type === 'project') {
+                console.log(`⏭️  Skipping index generation for project: ${module.title}`);
+                return;
+            }
+            
             pageTitle = module.title;
             pageDescription = module.description;
             displayModules = [];
             
-            if (module.type === 'projects-collection' && module.categories) {
-                // Projects page - show all projects from all categories
-                displayProjects = module.categories.flatMap(cat => 
-                    cat.projects.map(proj => ({
-                        ...proj,
-                        category: cat.title
-                    }))
-                );
-            } else if (module.projects) {
-                // Learning module - show projects/examples
-                displayProjects = module.projects;
+            if (module.type === 'categories') {
+                // Categories page - show project collections as modules, and all projects
+                displayModules = module.children || [];
+                displayProjects = this.flattenProjectsFromCategories(module.children || []);
+            } else if (module.type === 'projects-collection') {
+                // Projects collection - show direct children as projects
+                displayProjects = module.children || [];
             } else {
                 displayProjects = [];
             }
@@ -83,6 +85,16 @@ class PortfolioGenerator {
         await fs.ensureDir(path.dirname(outputPath));
         await fs.writeFile(outputPath, html);
         console.log(`✅ Generated: ${outputPath}`);
+    }
+
+    // Helper method to flatten projects from categories
+    flattenProjectsFromCategories(categories) {
+        return categories.flatMap(category => 
+            (category.children || []).map(project => ({
+                ...project,
+                category: category.title
+            }))
+        );
     }
 
     generateHTML({ pageTitle, pageDescription, currentPath, modules, projects, isRoot }) {
@@ -161,11 +173,26 @@ class PortfolioGenerator {
 
     generateModulesGrid(modules) {
         const cards = modules.map(module => {
-            const iconDisplay = module.icon.startsWith('fa-') 
-                ? `<i class="${module.icon}"></i>`
-                : module.icon;
+            const iconDisplay = module.icon ? 
+                (module.icon.startsWith('fa-') ? `<i class="${module.icon}"></i>` : module.icon) :
+                '📁'; // Default icon for collections without specific icon
                 
-            const moduleHref = module.path.slice(1).replace(/\/$/, '') + '/index.html';
+            // Count children based on type
+            let childrenCount = 0;
+            let childrenLabel = 'items';
+            
+            if (module.type === 'projects-collection' && module.children) {
+                childrenCount = module.children.length;
+                childrenLabel = 'projects';
+            } else if (module.type === 'categories' && module.children) {
+                childrenCount = module.children.flatMap(cat => cat.children || []).length;
+                childrenLabel = 'projects';
+            }
+            
+            const moduleHref = module.path ? 
+                (module.path.slice(1).replace(/\/$/, '') + '/index.html') :
+                '#';
+                
             return `
                 <div class="card module-card" onclick="location.href='${moduleHref}'">
                     <div class="card-icon">${iconDisplay}</div>
@@ -174,8 +201,7 @@ class PortfolioGenerator {
                         <p class="card-description">${module.description}</p>
                         <div class="card-meta">
                             <span class="card-type">${module.type.replace('-', ' ')}</span>
-                            ${module.projects ? `<span class="card-count">${module.projects.length} items</span>` : ''}
-                            ${module.categories ? `<span class="card-count">${module.categories.flatMap(c => c.projects).length} projects</span>` : ''}
+                            ${childrenCount > 0 ? `<span class="card-count">${childrenCount} ${childrenLabel}</span>` : ''}
                         </div>
                     </div>
                     <div class="card-arrow">
@@ -184,9 +210,12 @@ class PortfolioGenerator {
                 </div>`;
         }).join('\n            ');
 
+        const sectionTitle = modules.length > 0 && modules[0].type === 'projects-collection' ? 
+            '📂 Project Collections' : '🚀 Learning Modules';
+
         return `
             <section class="section">
-                <h2 class="section-title">🚀 Learning Modules</h2>
+                <h2 class="section-title">${sectionTitle}</h2>
                 <div class="grid modules-grid">
                     ${cards}
                 </div>
@@ -297,9 +326,11 @@ class PortfolioGenerator {
         // Generate root index
         await this.generateIndex('/');
         
-        // Generate module-specific indexes
+        // Generate module-specific indexes only for non-project types
         for (const module of this.portfolioData.modules) {
-            await this.generateIndex(module.path, module);
+            if (module.type !== 'project') {
+                await this.generateIndex(module.path, module);
+            }
         }
         
         console.log('✅ All files generated successfully!');
