@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Opener</title>
+    <script>{
+        window.onload = function() {
+            (function() {
+                const params = new URLSearchParams(window.location.search);
+                const youtube = params.get('youtube') || params.get('yt');
+                if (!youtube) return;
+
+                let target = youtube.trim();
+                let appUrl = '';
+                let webUrl = '';
+
+                // Handle different YouTube URL formats
+                if (isYouTubeURL(target)) {
+                    const urlInfo = parseYouTubeURL(target);
+                    appUrl = buildYouTubeAppURL(urlInfo);
+                    webUrl = buildYouTubeWebURL(urlInfo);
+                } else if (isVideoId(target)) {
+                    // Direct video ID
+                    appUrl = 'vnd.youtube://watch?v=' + encodeURIComponent(target);
+                    webUrl = 'https://www.youtube.com/watch?v=' + encodeURIComponent(target);
+                } else if (isChannelHandle(target)) {
+                    // Channel handle (@username or username)
+                    const channelName = target.startsWith('@') ? target.slice(1) : target;
+                    appUrl = 'vnd.youtube://channel/' + encodeURIComponent(channelName);
+                    webUrl = 'https://www.youtube.com/@' + encodeURIComponent(channelName);
+                } else {
+                    // Search query
+                    appUrl = 'vnd.youtube://search?q=' + encodeURIComponent(target);
+                    webUrl = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(target);
+                }
+
+                // Try to open the YouTube app first
+                const start = Date.now();
+                window.location = appUrl;
+
+                // Fallback to web version after delay
+                setTimeout(() => {
+                    // If app opened, the page is likely hidden or navigation happened
+                    if (document.hidden || (Date.now() - start) > 1200) return;
+                    window.location = webUrl;
+                }, 800);
+
+                function isYouTubeURL(url) {
+                    return /^https?:\/\/(www\.)?(youtube\.com|youtu\.be)/i.test(url) || 
+                           /youtube\.com|youtu\.be/i.test(url);
+                }
+
+                function isVideoId(str) {
+                    // YouTube video IDs are 11 characters long and contain letters, numbers, - and _
+                    return /^[a-zA-Z0-9_-]{11}$/.test(str);
+                }
+
+                function isChannelHandle(str) {
+                    // Channel handles start with @ or are simple usernames
+                    return /^@?[a-zA-Z0-9_-]+$/.test(str) && !isVideoId(str);
+                }
+
+                function parseYouTubeURL(url) {
+                    let fullUrl = url;
+                    if (!/^https?:\/\//i.test(fullUrl)) {
+                        fullUrl = 'https://' + fullUrl.replace(/^\/+/, '');
+                    }
+
+                    try {
+                        const urlObj = new URL(fullUrl);
+                        const result = { type: 'unknown', url: fullUrl };
+
+                        if (urlObj.hostname.includes('youtu.be')) {
+                            // Short URL format: youtu.be/VIDEO_ID
+                            const videoId = urlObj.pathname.slice(1);
+                            if (videoId) {
+                                result.type = 'video';
+                                result.videoId = videoId;
+                                result.timestamp = urlObj.searchParams.get('t');
+                            }
+                        } else if (urlObj.hostname.includes('youtube.com')) {
+                            const path = urlObj.pathname;
+                            const params = urlObj.searchParams;
+
+                            if (path === '/watch') {
+                                // Standard video: youtube.com/watch?v=VIDEO_ID
+                                result.type = 'video';
+                                result.videoId = params.get('v');
+                                result.timestamp = params.get('t');
+                                result.playlist = params.get('list');
+                            } else if (path.startsWith('/channel/')) {
+                                // Channel: youtube.com/channel/CHANNEL_ID
+                                result.type = 'channel';
+                                result.channelId = path.split('/')[2];
+                            } else if (path.startsWith('/c/') || path.startsWith('/user/')) {
+                                // Custom channel: youtube.com/c/USERNAME or youtube.com/user/USERNAME
+                                result.type = 'channel';
+                                result.channelName = path.split('/')[2];
+                            } else if (path.startsWith('/@')) {
+                                // New handle format: youtube.com/@username
+                                result.type = 'channel';
+                                result.handle = path.slice(2);
+                            } else if (path === '/playlist') {
+                                // Playlist: youtube.com/playlist?list=PLAYLIST_ID
+                                result.type = 'playlist';
+                                result.playlistId = params.get('list');
+                            } else if (path === '/results') {
+                                // Search: youtube.com/results?search_query=QUERY
+                                result.type = 'search';
+                                result.query = params.get('search_query');
+                            }
+                        }
+
+                        return result;
+                    } catch (e) {
+                        return { type: 'unknown', url: fullUrl };
+                    }
+                }
+
+                function buildYouTubeAppURL(urlInfo) {
+                    switch (urlInfo.type) {
+                        case 'video':
+                            let appUrl = 'vnd.youtube://watch?v=' + encodeURIComponent(urlInfo.videoId);
+                            if (urlInfo.timestamp) {
+                                appUrl += '&t=' + encodeURIComponent(urlInfo.timestamp);
+                            }
+                            if (urlInfo.playlist) {
+                                appUrl += '&list=' + encodeURIComponent(urlInfo.playlist);
+                            }
+                            return appUrl;
+                        case 'channel':
+                            if (urlInfo.channelId) {
+                                return 'vnd.youtube://channel/' + encodeURIComponent(urlInfo.channelId);
+                            } else if (urlInfo.handle) {
+                                return 'vnd.youtube://channel/' + encodeURIComponent(urlInfo.handle);
+                            } else if (urlInfo.channelName) {
+                                return 'vnd.youtube://user/' + encodeURIComponent(urlInfo.channelName);
+                            }
+                            break;
+                        case 'playlist':
+                            return 'vnd.youtube://playlist?list=' + encodeURIComponent(urlInfo.playlistId);
+                        case 'search':
+                            return 'vnd.youtube://search?q=' + encodeURIComponent(urlInfo.query);
+                        default:
+                            return 'vnd.youtube://';
+                    }
+                    return 'vnd.youtube://';
+                }
+
+                function buildYouTubeWebURL(urlInfo) {
+                    switch (urlInfo.type) {
+                        case 'video':
+                            let webUrl = 'https://www.youtube.com/watch?v=' + encodeURIComponent(urlInfo.videoId);
+                            if (urlInfo.timestamp) {
+                                webUrl += '&t=' + encodeURIComponent(urlInfo.timestamp);
+                            }
+                            if (urlInfo.playlist) {
+                                webUrl += '&list=' + encodeURIComponent(urlInfo.playlist);
+                            }
+                            return webUrl;
+                        case 'channel':
+                            if (urlInfo.channelId) {
+                                return 'https://www.youtube.com/channel/' + encodeURIComponent(urlInfo.channelId);
+                            } else if (urlInfo.handle) {
+                                return 'https://www.youtube.com/@' + encodeURIComponent(urlInfo.handle);
+                            } else if (urlInfo.channelName) {
+                                return 'https://www.youtube.com/c/' + encodeURIComponent(urlInfo.channelName);
+                            }
+                            break;
+                        case 'playlist':
+                            return 'https://www.youtube.com/playlist?list=' + encodeURIComponent(urlInfo.playlistId);
+                        case 'search':
+                            return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(urlInfo.query);
+                        default:
+                            return urlInfo.url || 'https://www.youtube.com';
+                    }
+                    return urlInfo.url || 'https://www.youtube.com';
+                }
+            })();
+        };
+    }</script>
+</head>
+<body>
+    <div style="font-family: Arial, sans-serif; text-align: center; padding: 50px;">
+        <h2>YouTube Opener</h2>
+        <p>Redirecting to YouTube...</p>
+        <p style="color: #666; font-size: 14px;">
+            If you're not redirected automatically, 
+            <a href="https://www.youtube.com" target="_blank">click here</a>
+        </p>
+    </div>
+</body>
+</html>

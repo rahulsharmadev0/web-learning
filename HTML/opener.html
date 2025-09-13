@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opener</title>
+    <script>{
+        window.onload = function() {
+            (function() {
+                const params = new URLSearchParams(window.location.search);
+                const insta = params.get('insta');
+                if (!insta) return;
+
+                let target = insta.trim();
+                if (target.startsWith('@')) target = target.slice(1);
+
+                const appUrl = 'instagram://user?username=' + encodeURIComponent(target);
+
+                let webUrl;
+                if (/^https?:\/\//i.test(target) || /instagram\.com/i.test(target)) {
+                    webUrl = /^https?:\/\//i.test(target) ? target : 'https://' + target.replace(/^\/+/, '');
+                } else {
+                    webUrl = 'https://www.instagram.com/' + encodeURIComponent(target) + '/';
+                }
+
+                const start = Date.now();
+                window.location = appUrl;
+
+                setTimeout(() => {
+                    // if app opened the page is likely hidden or a navigation already happened
+                    if (document.hidden || (Date.now() - start) > 1200) return;
+                    window.location = webUrl;
+                }, 800);
+            })();
+        };
+    }</script>
+</head>
+<body>
+    
+</body>
+</html>
