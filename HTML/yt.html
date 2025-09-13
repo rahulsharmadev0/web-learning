@@ -109,6 +109,14 @@
                                 // Search: youtube.com/results?search_query=QUERY
                                 result.type = 'search';
                                 result.query = params.get('search_query');
+                            } else if (path.startsWith('/shorts/')) {
+                                // Shorts: youtube.com/shorts/VIDEO_ID
+                                result.type = 'shorts';
+                                result.videoId = path.split('/')[2];
+                            } else if (path.startsWith('/post/')) {
+                                // Post: youtube.com/post/POST_ID
+                                result.type = 'post';
+                                result.postId = path.split('/')[2];
                             }
                         }
 
@@ -142,6 +150,10 @@
                             return 'vnd.youtube://playlist?list=' + encodeURIComponent(urlInfo.playlistId);
                         case 'search':
                             return 'vnd.youtube://search?q=' + encodeURIComponent(urlInfo.query);
+                        case 'shorts':
+                            return 'vnd.youtube://shorts/' + encodeURIComponent(urlInfo.videoId);
+                        case 'post':
+                            return 'vnd.youtube://post/' + encodeURIComponent(urlInfo.postId);
                         default:
                             return 'vnd.youtube://';
                     }
@@ -172,6 +184,10 @@
                             return 'https://www.youtube.com/playlist?list=' + encodeURIComponent(urlInfo.playlistId);
                         case 'search':
                             return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(urlInfo.query);
+                        case 'shorts':
+                            return 'https://www.youtube.com/shorts/' + encodeURIComponent(urlInfo.videoId);
+                        case 'post':
+                            return 'https://www.youtube.com/post/' + encodeURIComponent(urlInfo.postId);
                         default:
                             return urlInfo.url || 'https://www.youtube.com';
                     }
